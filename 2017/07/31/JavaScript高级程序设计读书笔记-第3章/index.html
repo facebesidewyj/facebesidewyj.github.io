@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="笔记,JavaScript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/superman.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="JavaScript高级程序设计读书笔记--第3章基本概念">
+<meta name="keywords" content="笔记,JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript高级程序设计读书笔记-第3章">
+<meta property="og:url" content="http://yoursite.com/2017/07/31/JavaScript高级程序设计读书笔记-第3章/index.html">
+<meta property="og:site_name" content="Gladiator&#39;s Blog">
+<meta property="og:description" content="JavaScript高级程序设计读书笔记--第3章基本概念">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-08-22T14:29:14.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript高级程序设计读书笔记-第3章">
+<meta name="twitter:description" content="JavaScript高级程序设计读书笔记--第3章基本概念">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/07/31/JavaScript高级程序设计读书笔记-第3章/"/>
+
+
+
+
+
+  <title>JavaScript高级程序设计读书笔记-第3章 | Gladiator's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Gladiator's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/31/JavaScript高级程序设计读书笔记-第3章/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wang Yijin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/superman.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gladiator's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JavaScript高级程序设计读书笔记-第3章</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-31T21:53:19+08:00">
+                2017-07-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JS高程笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">JS高程笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  JavaScript高级程序设计读书笔记--第3章基本概念
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h1><h2 id="1-区分大小写"><a href="#1-区分大小写" class="headerlink" title="(1)区分大小写"></a>(1)区分大小写</h2><p>ECMAScript中的一切(变量、函数名和操作符)都<strong>区分</strong>大小写。</p>
+<h2 id="2-标识符"><a href="#2-标识符" class="headerlink" title="(2)标识符"></a>(2)标识符</h2><p>标识符：指变量、函数、属性的名字，或是函数的参数。<br>标识符的书写规则如下：</p>
+<ol>
+<li>第一个字符必须是字母、下划线_或美元符号。</li>
+<li>其他字符可以是字母、下划线、美元符号或数字。</li>
+</ol>
+<blockquote>
+<p><strong>注：标识符推荐驼峰法的命名规则如：newCode，不能把关键字、保留字、true、false、和null作为标识符。</strong> </p>
+</blockquote>
+<h2 id="3-注释"><a href="#3-注释" class="headerlink" title="(3)注释"></a>(3)注释</h2><ul>
+<li>单行注释：<code>//</code></li>
+<li>块级注释：<pre><code>/*
+*
+*/
+</code></pre><h2 id="4-严格模式"><a href="#4-严格模式" class="headerlink" title="(4)严格模式"></a>(4)严格模式</h2>启用严格模式:在脚本顶部添加”use strict”。它是一个编译指示，告诉支持的JavaScript引擎切换到严格模式。<h2 id="5-语句"><a href="#5-语句" class="headerlink" title="(5)语句"></a>(5)语句</h2>JavaScript有效语句以一个分号(;)结尾。<br>代码块以{}标识。<br>注：<strong>建议不要省略分号！</strong>。<h1 id="关键字和保留字"><a href="#关键字和保留字" class="headerlink" title="关键字和保留字"></a>关键字和保留字</h1></li>
+<li>具有特定用途的关键字：break do instanceof typeof case else new var catch finally return void continue for switch while debugger function this with default if throw delete in try</li>
+<li>不能用作标识符的保留字：abstract enum int short boolean export interface static byte extends long super char final native synchronized class float package throws const goto private transient debugger implements protected volatile double import pbulic let yield<br>注：<strong>使用关键字做标识符会导致”Identifier Expected”错误</strong>。<h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1>ECMAScript中的变量是松散类型的，所谓松散类型就是可以用来保存任何类型的数据。<br>ECMAScript中使用var来声明变量，未经初始化的变量会保存一个特殊的值undefined。<br>使用var声明的变量，是定义该变量作用域中的局部变量，也就是说在函数中使用var定义一个变量，在函数退出后，该变量就会销毁。如果不使用var定义变量(不推荐)，将会定义一个全局变量。<h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><h2 id="1-typeof操作符"><a href="#1-typeof操作符" class="headerlink" title="(1)typeof操作符"></a>(1)typeof操作符</h2>typeof是用来检测给定变量的数据类型的。<br>使用typeof操作符返回的字符串有如下几种：</li>
+<li>“undefined”–未定义</li>
+<li>“boolean”–布尔值</li>
+<li>“string”–字符串</li>
+<li>“number”–数值</li>
+<li>“object”–对象或null</li>
+<li>“function”–函数<br>例子：<pre><code>var message = &quot;aaa&quot;;
+alert(typeof(message));
+alert(typeof 1);
+</code></pre><h2 id="2-Undefined类型"><a href="#2-Undefined类型" class="headerlink" title="(2)Undefined类型"></a>(2)Undefined类型</h2>Undefined类型只有一个值，就是undefined。使用var声明变量时未对其进行初始化，这个变量的值就是undefined。</li>
+</ul>
+<blockquote>
+<p>注：<strong>我们在声明变量时应尽量对其进行初始化，这样当我们遇到undefined时，就知道该变量是没有被声明，而不是没有被初始化。</strong> </p>
+</blockquote>
+<h2 id="3-Null类型"><a href="#3-Null类型" class="headerlink" title="(3)Null类型"></a>(3)Null类型</h2><p>Null类型也只有一个值，就是null。逻辑上来说null表示一个空对象指针，所以typeof(null)会返回Object。</p>
+<blockquote>
+<p>注：<strong>null == undefined，但null与undefined的用途不同，我们在声明对象时，应该把没有明确对象的变量值设为null。</strong> </p>
+</blockquote>
+<h2 id="4-Boolean类型"><a href="#4-Boolean类型" class="headerlink" title="(4)Boolean类型"></a>(4)Boolean类型</h2><p>Boolean类型有两个值：true和false。true不一定等于1，false也不一定等于0。<br>运用转型函数Boolean()可以将一个值转换成对应的Boolean值。<br>例如:<br>        var message = “hello world”;<br>        alert(Boolean(message));<br>各种数据类型转换规则一览表：</p>
+<p><table> <tr> <th>数据类型</th> <th>转换为true的值</th> <th>转换为false的值</th></tr> <tr> <th>Boolean</th> <th>true</th> <th>false</th> </tr> <tr> <th>Number</th> <th>非0数值</th> <th>0和NaN</th> </tr> <tr> <th>String</th> <th>非空字符串</th> <th>“”</th> </tr> <tr> <th>Object</th> <th>任何对象</th> <th>null</th> </tr> <tr> <th>Undefined</th> <th> </th> <th>undefined</th> </tr> <table></table></table></p>
+<h2 id="5-Number类型"><a href="#5-Number类型" class="headerlink" title="(5)Number类型"></a>(5)Number类型</h2><h3 id="1-浮点数值"><a href="#1-浮点数值" class="headerlink" title="1.浮点数值"></a>1.浮点数值</h3><p>浮点数，即数值中必须有一个小数点，并且小数点后面必须有一位数字。<br>对于那些极大或极小的浮点数，可以使用e表示法，如:<br><code>var floatNum = 3.12e7; //等于31200000</code></p>
+<blockquote>
+<p>注：<strong>保存浮点数的内存空间是保存整数内存空间的2倍。</strong> </p>
+</blockquote>
+<h3 id="2-数值范围"><a href="#2-数值范围" class="headerlink" title="2.数值范围"></a>2.数值范围</h3><p>Number.MIN_VALUE里保存着最小的数值，Number.MAX_VALUE里保存着最大的数值。<br>如果某次计算结果超出了JavaScript的数值范围，则这个数值将自动转换为Infinity值。<br>Infinity值无法再次进行计算。</p>
+<h3 id="3-NaN"><a href="#3-NaN" class="headerlink" title="3.NaN"></a>3.NaN</h3><p>NaN：即非数值(Not aNumber)，NaN与任何数值都不相等，包括NaN本身。<br>ECMAScript定义了一个叫isNaN()的函数，可以用来检测一个参数是不是“非数值”，例如：<br>        alert(isNaN(“blue”));//true<br>        alert(isNaN(10));//false</p>
+<h3 id="4-数值转换"><a href="#4-数值转换" class="headerlink" title="4.数值转换"></a>4.数值转换</h3><p>三个方法：<br>&emsp;&emsp;Number(任何类型):可以用于任何类型，<br>&emsp;&emsp;parseInt(value,进制数):专门用于转换字符串，进制数可以不写，方法会自<br>&emsp;&emsp;己判断。<br>&emsp;&emsp;parseFloat(字符串,进制数):专门用于转换字符串，进制数可以不写，方法<br>&emsp;&emsp;会自己判断。</p>
+<h2 id="6-String类型"><a href="#6-String类型" class="headerlink" title="(6)String类型"></a>(6)String类型</h2><h3 id="1-字符字面量"><a href="#1-字符字面量" class="headerlink" title="1.字符字面量"></a>1.字符字面量</h3><p>字符字面量又叫转义序列，用于表示非打印字符，也就是我们平时说的转义字符。常用字符字面量有如下几个：<br>&emsp;&emsp;\n 换行<br>&emsp;&emsp;\r 回车<br>&emsp;&emsp;\\ 斜杠<br>&emsp;&emsp;\’ 单引号<br>&emsp;&emsp;\” 双引号<br>&emsp;&emsp;\b 退格</p>
+<h3 id="2-字符串特点"><a href="#2-字符串特点" class="headerlink" title="2.字符串特点"></a>2.字符串特点</h3><p>ECMAScript中的字符串是不可变的，一旦创建就不能改变，要改变字符串的值，就需要把之前的字符串销毁，在重新定义一个字符串。<br>注：字符串拼接效率低下的原因就是因为需要销毁原来的字符串，在重新定义字符串。</p>
+<h3 id="3-转换为字符串"><a href="#3-转换为字符串" class="headerlink" title="3.转换为字符串"></a>3.转换为字符串</h3><p>字符串转换的方法有两种：<br>&emsp;&emsp;toString()：几乎每个值都有的方法，obj.toString(进制数);进制数不传默<br>&emsp;&emsp;认为十进制。<br>&emsp;&emsp;String(value)：转型函数，value为任何类型，如果value有toString()方法<br>&emsp;&emsp;则会执行toString()方法，并返回结果，如果value是null和undefined，则<br>&emsp;&emsp;返回”null”和”undefined”。</p>
+<h2 id="7-Object类型"><a href="#7-Object类型" class="headerlink" title="(7)Object类型"></a>(7)Object类型</h2><p>Object实例具有的属性和方法：<br>&emsp;&emsp;constructor：构造函数，保存着用于创建当前对象的函数。<br>&emsp;&emsp;hasOwnProperty(propertyName)：检查属性是否在实例中(并不是在实例的原<br>&emsp;&emsp;型中)。必须传入字符串。<br>&emsp;&emsp;isPrototypeOf(object)：检查传入的对象是否是当前对象的原型。<br>&emsp;&emsp;propertyIsEnumerable(propertyName)：检查给定的属性是否能使用for-in<br>&emsp;&emsp;语句来进行枚举。必须传入字符串。<br>&emsp;&emsp;toLocaleString()：返回对象的字符串表示，字符串与浏览器的地区对应。<br>&emsp;&emsp;toString():返回对象的字符串表示。<br>&emsp;&emsp;valueOf()：返回对象的字符串、数值或布尔值，通常与toString()的返回值<br>&emsp;&emsp;相等。</p>
+<h1 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h1><h2 id="1-一元操作符"><a href="#1-一元操作符" class="headerlink" title="(1)一元操作符"></a>(1)一元操作符</h2><p>递增和递减操作符：++和–。<br>一元加和减操作符：+和-，加号放在数值前，没有任何影响，减号常用来表示负数，例如：-1。</p>
+<h2 id="2-位操作符"><a href="#2-位操作符" class="headerlink" title="(2)位操作符"></a>(2)位操作符</h2><h2 id="3-布尔操作符"><a href="#3-布尔操作符" class="headerlink" title="(3)布尔操作符"></a>(3)布尔操作符</h2><p>逻辑非：由！表示，返回一个布尔值。<br>逻辑与：由&amp;&amp;表示，有两个操作数，属于短路操作。只要一个数为false，则返回false，<br>两个操作数都为true，才返回true。<br>逻辑或：由||表示，有两个操作数，也属于短路操作。只要一个数为true，则返回true，<br>两个数都为false，才返回false。<br>注：我们可以利用逻辑或来为变量赋值，避免变量被赋值为null或undefined，例如：<br><code>var obj = preObj || backObj;</code></p>
+<h2 id="4-乘性操作符"><a href="#4-乘性操作符" class="headerlink" title="(4)乘性操作符"></a>(4)乘性操作符</h2><p>乘法：由*表示，用于计算两个数的乘积。如果乘积超过了数值表示范围，则返回Infinity。<br>除法：由/表示，执行第二个操作数除第一个操作数的计算，如果商超过了数值表示范围，<br>也返回Infinity。</p>
+<h2 id="5-加性操作符"><a href="#5-加性操作符" class="headerlink" title="(5)加性操作符"></a>(5)加性操作符</h2><p>加法：由+表示，用于加法计算，还可用于字符串拼接和转换字符串。每个加法操作都是独立运行的，举例说明ECMAScript中一个常见的错误：<br>        var num1 = 1;<br>        var num2 = 2;<br>        var str = “str” + num1 + num2; // 结果为str12<br>        // 正确写法为<br>        var str2 = “str” + (num1 + num2); // 结果为str3<br>减法：由-表示，用于减法操作。</p>
+<h2 id="6-关系操作符"><a href="#6-关系操作符" class="headerlink" title="(6)关系操作符"></a>(6)关系操作符</h2><p>&lt;、&gt;、&lt;=、&gt;=这些是关系操作符，它们会返回一个布尔值，比较规则如下：</p>
+<ul>
+<li>两个数都是数值，则数值比较。</li>
+<li>两个数都是字符串，比较字符编码。</li>
+<li>一个是数值，会将另一个数转换为数值，执行比较。</li>
+<li>如果有对象，则会先调用valueOf()方法或toString()方法将对象转换，在再进行比较。</li>
+</ul>
+<blockquote>
+<p><strong>注：任何操作数与NaN相比较都返回false。</strong> </p>
+</blockquote>
+<h2 id="7-相等操作符"><a href="#7-相等操作符" class="headerlink" title="(7)相等操作符"></a>(7)相等操作符</h2><p>相等和不相等：由==和!=表示，它们会对操作数先进行强制类型转换，再进行比较。不推荐使用。<br>全等和不全等：由===和!==表示，不进行强制类型转换，直接比较，推荐使用。</p>
+<h2 id="8-条件操作符"><a href="#8-条件操作符" class="headerlink" title="(8)条件操作符"></a>(8)条件操作符</h2><p>形如：variable = boolean_expression ? true_value : false_value;<br>本质上，variable的值取决于boolean_expression表达式的值，如果为true，则取true_value，反之，则取false_value。</p>
+<h2 id="9-赋值操作符"><a href="#9-赋值操作符" class="headerlink" title="(9)赋值操作符"></a>(9)赋值操作符</h2><p>由=表示，用于把等号右边的值赋值给等号左边的变量。</p>
+<h2 id="10-逗号操作符"><a href="#10-逗号操作符" class="headerlink" title="(10)逗号操作符"></a>(10)逗号操作符</h2><p>使用逗号操作符可以在一条语句中执行多个操作，形如<code>var num1 = 1, num2 = 2;</code></p>
+<h1 id="语句"><a href="#语句" class="headerlink" title="语句"></a>语句</h1><h2 id="1-if语句"><a href="#1-if语句" class="headerlink" title="(1)if语句"></a>(1)if语句</h2><p>形如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">if(condition)&#123;</div><div class="line">    statement</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="2-do-while语句"><a href="#2-do-while语句" class="headerlink" title="(2)do-while语句"></a>(2)do-while语句</h2><p>后检测循环语句，先执行后测试条件，形如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">do&#123;</div><div class="line">    statement</div><div class="line">&#125;while(expression);</div></pre></td></tr></table></figure></p>
+<h2 id="3-while语句"><a href="#3-while语句" class="headerlink" title="(3)while语句"></a>(3)while语句</h2><p>前循环语句，先检测条件再执行，形如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">while(expression)&#123;</div><div class="line">    statement</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="4-for语句"><a href="#4-for语句" class="headerlink" title="(4)for语句"></a>(4)for语句</h2><p>前循环语句，形如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">for(var i = 0; i &lt; 10; i++)&#123;</div><div class="line">    statement</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>注:<strong>循环变量i在循环外部也能访问到。</strong> </p>
+</blockquote>
+<h2 id="5-for-in语句"><a href="#5-for-in语句" class="headerlink" title="(5)for-in语句"></a>(5)for-in语句</h2><p>精准迭代语句，可用来枚举对象，形如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">for(property in expression)&#123;</div><div class="line">    statement</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="7-break和continue语句"><a href="#7-break和continue语句" class="headerlink" title="(7)break和continue语句"></a>(7)break和continue语句</h2><p>break是停止循环，continue是立即退出循环，但重新进行。</p>
+<h2 id="8-with语句"><a href="#8-with语句" class="headerlink" title="(8)with语句"></a>(8)with语句</h2><p>将代码的作用域设置到一个特定的对象中，形如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">with(expression)&#123;</div><div class="line">    statement</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="9-switch语句"><a href="#9-switch语句" class="headerlink" title="(9)switch语句"></a>(9)switch语句</h2><p>在进行多个数比较时，使用switch，switch使用的是全等操作符，并且可以在语句中使用任何数据类型，每个case可以是常量、表达式和变量，形如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">switch(expression)&#123;</div><div class="line">    case value: statement</div><div class="line">        break;</div><div class="line">    case value: statement</div><div class="line">        break;</div><div class="line">    case value: statement</div><div class="line">        break;</div><div class="line">    default:statement</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><p>使用事项：要么让函数始终都有返回值，要么永远没有返回值。</p>
+<h2 id="1-理解参数"><a href="#1-理解参数" class="headerlink" title="(1)理解参数"></a>(1)理解参数</h2><p>参数在ECMAScript中是用一个数组来表示的，ECMAScript不介意传递多少参数，也不在乎参数是什么类型，假设有一个函数有两个传递参数，那么在调用时可以传一个、两个或者不传都没事。命名的参数只是提供便利，但不是必须的。<br>实际上在函数体内部可以通过arguments对象来访问参数数组，例如：arguments[1]获取第二个参数。</p>
+<blockquote>
+<p>注：<strong> ECMAScript中所有的参数传递的都是值，不能通过引用传递参数。传递对象时<br>，是传递对象中的内存地址。</strong> </p>
+</blockquote>
+<h2 id="2-没有重载"><a href="#2-没有重载" class="headerlink" title="(2)没有重载"></a>(2)没有重载</h2><p>ECMAScript函数是不能重载的，后定义的函数会覆盖前面定义的。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/笔记/" rel="tag"># 笔记</a>
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/30/JavaScript高级程序设计读书笔记-第2章/" rel="next" title="JavaScript高级程序设计读书笔记-第2章">
+                <i class="fa fa-chevron-left"></i> JavaScript高级程序设计读书笔记-第2章
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/07/工作填坑杂谈(1)/" rel="prev" title="工作中填坑杂谈(1)">
+                工作中填坑杂谈(1) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/superman.jpg"
+               alt="Wang Yijin" />
+          <p class="site-author-name" itemprop="name">Wang Yijin</p>
+           
+              <p class="site-description motion-element" itemprop="description">莫道君行早，更有早行人。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/facebesidewyj" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#语法"><span class="nav-number">1.</span> <span class="nav-text">语法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-区分大小写"><span class="nav-number">1.1.</span> <span class="nav-text">(1)区分大小写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-标识符"><span class="nav-number">1.2.</span> <span class="nav-text">(2)标识符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-注释"><span class="nav-number">1.3.</span> <span class="nav-text">(3)注释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-严格模式"><span class="nav-number">1.4.</span> <span class="nav-text">(4)严格模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-语句"><span class="nav-number">1.5.</span> <span class="nav-text">(5)语句</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关键字和保留字"><span class="nav-number">2.</span> <span class="nav-text">关键字和保留字</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#变量"><span class="nav-number">3.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据类型"><span class="nav-number">4.</span> <span class="nav-text">数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-typeof操作符"><span class="nav-number">4.1.</span> <span class="nav-text">(1)typeof操作符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Undefined类型"><span class="nav-number">4.2.</span> <span class="nav-text">(2)Undefined类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Null类型"><span class="nav-number">4.3.</span> <span class="nav-text">(3)Null类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Boolean类型"><span class="nav-number">4.4.</span> <span class="nav-text">(4)Boolean类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Number类型"><span class="nav-number">4.5.</span> <span class="nav-text">(5)Number类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-浮点数值"><span class="nav-number">4.5.1.</span> <span class="nav-text">1.浮点数值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-数值范围"><span class="nav-number">4.5.2.</span> <span class="nav-text">2.数值范围</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-NaN"><span class="nav-number">4.5.3.</span> <span class="nav-text">3.NaN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-数值转换"><span class="nav-number">4.5.4.</span> <span class="nav-text">4.数值转换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-String类型"><span class="nav-number">4.6.</span> <span class="nav-text">(6)String类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-字符字面量"><span class="nav-number">4.6.1.</span> <span class="nav-text">1.字符字面量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-字符串特点"><span class="nav-number">4.6.2.</span> <span class="nav-text">2.字符串特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-转换为字符串"><span class="nav-number">4.6.3.</span> <span class="nav-text">3.转换为字符串</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-Object类型"><span class="nav-number">4.7.</span> <span class="nav-text">(7)Object类型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#操作符"><span class="nav-number">5.</span> <span class="nav-text">操作符</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-一元操作符"><span class="nav-number">5.1.</span> <span class="nav-text">(1)一元操作符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-位操作符"><span class="nav-number">5.2.</span> <span class="nav-text">(2)位操作符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-布尔操作符"><span class="nav-number">5.3.</span> <span class="nav-text">(3)布尔操作符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-乘性操作符"><span class="nav-number">5.4.</span> <span class="nav-text">(4)乘性操作符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-加性操作符"><span class="nav-number">5.5.</span> <span class="nav-text">(5)加性操作符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-关系操作符"><span class="nav-number">5.6.</span> <span class="nav-text">(6)关系操作符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-相等操作符"><span class="nav-number">5.7.</span> <span class="nav-text">(7)相等操作符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-条件操作符"><span class="nav-number">5.8.</span> <span class="nav-text">(8)条件操作符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-赋值操作符"><span class="nav-number">5.9.</span> <span class="nav-text">(9)赋值操作符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-逗号操作符"><span class="nav-number">5.10.</span> <span class="nav-text">(10)逗号操作符</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#语句"><span class="nav-number">6.</span> <span class="nav-text">语句</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-if语句"><span class="nav-number">6.1.</span> <span class="nav-text">(1)if语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-do-while语句"><span class="nav-number">6.2.</span> <span class="nav-text">(2)do-while语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-while语句"><span class="nav-number">6.3.</span> <span class="nav-text">(3)while语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-for语句"><span class="nav-number">6.4.</span> <span class="nav-text">(4)for语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-for-in语句"><span class="nav-number">6.5.</span> <span class="nav-text">(5)for-in语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-break和continue语句"><span class="nav-number">6.6.</span> <span class="nav-text">(7)break和continue语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-with语句"><span class="nav-number">6.7.</span> <span class="nav-text">(8)with语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-switch语句"><span class="nav-number">6.8.</span> <span class="nav-text">(9)switch语句</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数"><span class="nav-number">7.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-理解参数"><span class="nav-number">7.1.</span> <span class="nav-text">(1)理解参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-没有重载"><span class="nav-number">7.2.</span> <span class="nav-text">(2)没有重载</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wang Yijin</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

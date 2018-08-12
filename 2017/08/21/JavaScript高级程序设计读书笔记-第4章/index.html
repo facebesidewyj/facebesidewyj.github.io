@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="笔记,JavaScript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/superman.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="JavaScript高级程序设计读书笔记--第4章变量、作用域和内存问题">
+<meta name="keywords" content="笔记,JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript高级程序设计读书笔记-第4章">
+<meta property="og:url" content="http://yoursite.com/2017/08/21/JavaScript高级程序设计读书笔记-第4章/index.html">
+<meta property="og:site_name" content="Gladiator&#39;s Blog">
+<meta property="og:description" content="JavaScript高级程序设计读书笔记--第4章变量、作用域和内存问题">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-08-31T15:21:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript高级程序设计读书笔记-第4章">
+<meta name="twitter:description" content="JavaScript高级程序设计读书笔记--第4章变量、作用域和内存问题">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/08/21/JavaScript高级程序设计读书笔记-第4章/"/>
+
+
+
+
+
+  <title>JavaScript高级程序设计读书笔记-第4章 | Gladiator's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Gladiator's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/21/JavaScript高级程序设计读书笔记-第4章/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wang Yijin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/superman.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gladiator's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JavaScript高级程序设计读书笔记-第4章</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-21T23:06:14+08:00">
+                2017-08-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JS高程笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">JS高程笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  JavaScript高级程序设计读书笔记--第4章变量、作用域和内存问题
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="基本类型和引用类型的值"><a href="#基本类型和引用类型的值" class="headerlink" title="基本类型和引用类型的值"></a>基本类型和引用类型的值</h1><p>ECMAScript规定了5种基本类型：Undefined、Null、Boolean、Number和String。</p>
+<blockquote>
+<p>注：<strong>String在ECMAScript中不是对象。</strong> </p>
+</blockquote>
+<h2 id="1、动态的属性"><a href="#1、动态的属性" class="headerlink" title="1、动态的属性"></a>1、动态的属性</h2><p>对于引用类型的值，我们可以为其添加属性和方法，也可以动态的改变和删除其属性和方法，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var person = new Object();</div><div class="line">person.name = &quot;tom&quot;; // 动态添加属性</div><div class="line">delete person.name; // 动态删除属性</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>注：只能作用于引用类型。 </p>
+</blockquote>
+<h2 id="2、复制变量值"><a href="#2、复制变量值" class="headerlink" title="2、复制变量值"></a>2、复制变量值</h2><p>基本类型复制：复制基本类型会在被复制成功的变量上创建新值。两个变量可以参与任何<br>操作而不受影响。<br>引用类型复制：复制引用类型是创建一个指针，指向被复制的对象，两个变量操作同一个对象。</p>
+<h2 id="3、传递参数"><a href="#3、传递参数" class="headerlink" title="3、传递参数"></a>3、传递参数</h2><p>ECMAScript中所有函数的参数都是按值传递的，基本类型值传递如同基本类型变量复制一样，引用类型传递如同引用类型变量复制一样(传递的是地址)。<br>可以把基本类型传递的参数想象成局部变量。</p>
+<blockquote>
+<p>注：<strong>如果传入的参数变量是引用类型，则对该参数的操作会影响函数外部的变量</strong>。 </p>
+</blockquote>
+<h2 id="4、检测类型"><a href="#4、检测类型" class="headerlink" title="4、检测类型"></a>4、检测类型</h2><p>typeof：检测基本类型，可以确定一个变量是字符串、数值、布尔值还是undefined，检测函数时会返回”function”，但如果变量是null和对象，则会返回”object”。<br>instanceof：检测引用类型，返回值是true和false，检测基本类型始终返回false，具体使用如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">alert(person instanceof Object); // 是Object吗</div><div class="line">alert(person instanceof Array); // 是数组吗</div><div class="line">alert(person instanceof RegExp); // 是正则吗</div></pre></td></tr></table></figure></p>
+<h1 id="执行环境及作用域"><a href="#执行环境及作用域" class="headerlink" title="执行环境及作用域"></a>执行环境及作用域</h1><p>全局执行环境是最外围的一个执行环境，根据ECMAScript实现所在的宿主环境不同，其执行环境对象也不一样，在Web浏览器中，全局执行环境为window对象。<br>因此，所有的全局变量和函数都是作为window对象的属性和方法创建的。每个函数也有自己的执行环境，当函数执行时，函数的环境就会被推入一个环境栈中，再函数执行完毕，栈将其环境弹出。<br>当代码在一个环境中执行时，会创建变量对象的作用域链，其作用时保证所有函数和变量的有序访问。<br><strong>每个环境都可以向上搜索作用域链，所以内部环境可以通过作用域链访问所有的外部环境，外部环境不能访问内部环境的任何变量和函数。</strong></p>
+<h2 id="1、延长作用域链"><a href="#1、延长作用域链" class="headerlink" title="1、延长作用域链"></a>1、延长作用域链</h2><p>try-catch语句的catch块</p>
+<h2 id="2、没有块级作用域"><a href="#2、没有块级作用域" class="headerlink" title="2、没有块级作用域"></a>2、没有块级作用域</h2><p>JavaScript没有块级作用域，在if或for中声明的变量会添加到当前的执行环境中。<br>在函数中没有使用var声明变量，该变量就会添加到全局环境中(一定要先声明变量)。<br>标识符的搜索顺序：先从当前的执行环境中寻找，如果没有再向上搜索作用域链，一直到找到该标识符或到了全局环境。</p>
+<h1 id="垃圾收集"><a href="#垃圾收集" class="headerlink" title="垃圾收集"></a>垃圾收集</h1><h2 id="1、标记清除"><a href="#1、标记清除" class="headerlink" title="1、标记清除"></a>1、标记清除</h2><p>最常用的垃圾收集方式。垃圾收集器在运行的时候会给存储在内存中的变量都加上标记，然后，去掉环境中的变量以及被环境中变量所引用的的变量的标记。而在此之后再被加上标记的变量被视为准备删除的变量。</p>
+<h2 id="2、引用计数"><a href="#2、引用计数" class="headerlink" title="2、引用计数"></a>2、引用计数</h2><p>不太常见的垃圾收集策略。</p>
+<blockquote>
+<p>注：会导致循环引用 </p>
+</blockquote>
+<h2 id="3、性能问题"><a href="#3、性能问题" class="headerlink" title="3、性能问题"></a>3、性能问题</h2><p>垃圾收集器是周期性运行的，在IE中可以调用window.CollectGarbage()来立即执行<br>垃圾收集。在Opera7及更高版本中调用window.opera.collect()也会启动垃圾收集。</p>
+<blockquote>
+<p>注：不建议手动触发垃圾收集过程。 </p>
+</blockquote>
+<h2 id="4、管理内存"><a href="#4、管理内存" class="headerlink" title="4、管理内存"></a>4、管理内存</h2><p>确保占用最少的内存可以让页面获得更好的性能，所以一旦有数据不再有用，最好将其设置为null来释放其引用。<br>这一做法适用于大多数全局变量和全局对象的属性，不过解除一个值的引用并不意味着自动回收该值所在的内存，而是让其脱离执行环境，方便垃圾收集器运行时将其回收。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/笔记/" rel="tag"># 笔记</a>
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/07/工作填坑杂谈(1)/" rel="next" title="工作中填坑杂谈(1)">
+                <i class="fa fa-chevron-left"></i> 工作中填坑杂谈(1)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/23/前端实现图片懒加载的几种方式/" rel="prev" title="前端实现图片懒加载的几种方式">
+                前端实现图片懒加载的几种方式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/superman.jpg"
+               alt="Wang Yijin" />
+          <p class="site-author-name" itemprop="name">Wang Yijin</p>
+           
+              <p class="site-description motion-element" itemprop="description">莫道君行早，更有早行人。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/facebesidewyj" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基本类型和引用类型的值"><span class="nav-number">1.</span> <span class="nav-text">基本类型和引用类型的值</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、动态的属性"><span class="nav-number">1.1.</span> <span class="nav-text">1、动态的属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、复制变量值"><span class="nav-number">1.2.</span> <span class="nav-text">2、复制变量值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、传递参数"><span class="nav-number">1.3.</span> <span class="nav-text">3、传递参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、检测类型"><span class="nav-number">1.4.</span> <span class="nav-text">4、检测类型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#执行环境及作用域"><span class="nav-number">2.</span> <span class="nav-text">执行环境及作用域</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、延长作用域链"><span class="nav-number">2.1.</span> <span class="nav-text">1、延长作用域链</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、没有块级作用域"><span class="nav-number">2.2.</span> <span class="nav-text">2、没有块级作用域</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#垃圾收集"><span class="nav-number">3.</span> <span class="nav-text">垃圾收集</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、标记清除"><span class="nav-number">3.1.</span> <span class="nav-text">1、标记清除</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、引用计数"><span class="nav-number">3.2.</span> <span class="nav-text">2、引用计数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、性能问题"><span class="nav-number">3.3.</span> <span class="nav-text">3、性能问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、管理内存"><span class="nav-number">3.4.</span> <span class="nav-text">4、管理内存</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wang Yijin</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
