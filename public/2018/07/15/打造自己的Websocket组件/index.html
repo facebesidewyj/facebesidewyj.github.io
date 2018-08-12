@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="JavaScript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/superman.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="打造自己的Websocket组件">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="打造自己的Websocket组件">
+<meta property="og:url" content="http://yoursite.com/2018/07/15/打造自己的Websocket组件/index.html">
+<meta property="og:site_name" content="Gladiator&#39;s Blog">
+<meta property="og:description" content="打造自己的Websocket组件">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-08-12T14:40:07.590Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="打造自己的Websocket组件">
+<meta name="twitter:description" content="打造自己的Websocket组件">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/07/15/打造自己的Websocket组件/"/>
+
+
+
+
+
+  <title>打造自己的Websocket组件 | Gladiator's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Gladiator's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/15/打造自己的Websocket组件/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wang Yijin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/superman.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gladiator's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">打造自己的Websocket组件</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-15T22:01:24+08:00">
+                2018-07-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JS实战/" itemprop="url" rel="index">
+                    <span itemprop="name">JS实战</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  打造自己的Websocket组件
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Websocket详解"><a href="#Websocket详解" class="headerlink" title="Websocket详解"></a>Websocket详解</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>WebSocket一种在单个 TCP 连接上进行全双工通讯的协议，它由通信协议和编程API组成，WebSocket能够在浏览器和服务器之间建立双向连接，以基于事件的方式，赋予浏览器实时通信能力。既然是双向通信，就意味着服务器端和客户端可以同时发送并响应请求，而不再像HTTP的请求和响应。</p>
+<h2 id="优点及适用场景"><a href="#优点及适用场景" class="headerlink" title="优点及适用场景"></a>优点及适用场景</h2><ol>
+<li><p>优点：</p>
+<ul>
+<li>跨域</li>
+<li>更好的二进制支持。Websocket定义了二进制帧，可以更轻松地处理二进制内容</li>
+<li>实时性</li>
+<li>长连接</li>
+</ul>
+</li>
+<li><p>适用场景：</p>
+<ul>
+<li>聊天</li>
+<li>文字直播</li>
+<li>实时消息推送</li>
+<li>数据实时更新</li>
+</ul>
+</li>
+</ol>
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><ol>
+<li>创建Websocket对象：<code>let ws = new Websocket(&#39;ws://localhost:8080&#39;)</code></li>
+<li><p>4个事件对象：</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 当websocket连接建立成功时</span></div><div class="line">ws.addEventListener(<span class="string">'open'</span>, () =&gt; &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'websocket 建立连接'</span>)</div><div class="line">&#125;)</div><div class="line">	</div><div class="line"><span class="comment">// 当收到服务端的消息时</span></div><div class="line">ws.addEventListener(<span class="string">'message'</span>, (event) =&gt; &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'获得数据'</span>, event.data)</div><div class="line">&#125;)</div><div class="line">	</div><div class="line"><span class="comment">// 当websocket关闭时</span></div><div class="line">ws.addEventListener(<span class="string">'close'</span>, (event) =&gt; &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"websocket 连接关闭"</span>)</div><div class="line">&#125;)</div><div class="line">	</div><div class="line"><span class="comment">// 当出现错误时</span></div><div class="line">ws.addEventListener(<span class="string">'error'</span>, (event) =&gt; &#123;</div><div class="line">    <span class="built_in">console</span>.error(<span class="string">"websocket 出现错误"</span>)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>2个方法：</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 发送消息 </span></div><div class="line">ws.send(<span class="string">'hello websocket'</span>)</div><div class="line">	</div><div class="line"><span class="comment">// 关闭socket</span></div><div class="line">ws.close()</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="封装一个socket组件"><a href="#封装一个socket组件" class="headerlink" title="封装一个socket组件"></a>封装一个socket组件</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div><div class="line">227</div><div class="line">228</div><div class="line">229</div><div class="line">230</div><div class="line">231</div><div class="line">232</div><div class="line">233</div><div class="line">234</div><div class="line">235</div><div class="line">236</div><div class="line">237</div><div class="line">238</div><div class="line">239</div><div class="line">240</div><div class="line">241</div><div class="line">242</div><div class="line">243</div><div class="line">244</div><div class="line">245</div><div class="line">246</div><div class="line">247</div><div class="line">248</div><div class="line">249</div><div class="line">250</div><div class="line">251</div><div class="line">252</div><div class="line">253</div><div class="line">254</div><div class="line">255</div><div class="line">256</div><div class="line">257</div><div class="line">258</div><div class="line">259</div><div class="line">260</div><div class="line">261</div><div class="line">262</div><div class="line">263</div><div class="line">264</div><div class="line">265</div><div class="line">266</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * websocket请求封装</span></div><div class="line"><span class="comment"> * @class</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Socket</span> </span>&#123;</div><div class="line">  <span class="comment">/**</span></div><div class="line"><span class="comment">   * @constructs Socket</span></div><div class="line"><span class="comment">   * @param &#123;String&#125; url 创建地址</span></div><div class="line"><span class="comment">   * @param &#123;Boolean&#125; isNeedReconnect 是否需要断开重连机制</span></div><div class="line"><span class="comment">   * @param &#123;Number&#125; reconnectLimit 重连次数上限</span></div><div class="line"><span class="comment">   * @param &#123;Function&#125; openCallback 连接建立成功回调函数</span></div><div class="line"><span class="comment">   * @param &#123;Function&#125; messageCallback 监听消息回调函数</span></div><div class="line"><span class="comment">   * @param &#123;Function&#125; closeCallback 关闭连接回调函数</span></div><div class="line"><span class="comment">   * @param &#123;Function&#125; errorCallback 异常回调函数</span></div><div class="line"><span class="comment">   */</span></div><div class="line">  <span class="keyword">constructor</span>(&#123; url, isNeedReconnect, reconnectLimit, openCallback, messageCallback, closeCallback, errorCallback &#125;) &#123;</div><div class="line">    <span class="keyword">this</span>.url = url</div><div class="line">    <span class="keyword">this</span>.isNeedReconnect = isNeedReconnect</div><div class="line">    <span class="keyword">this</span>.reconnectLimit = reconnectLimit || <span class="number">7</span></div><div class="line">    <span class="keyword">this</span>.openCallback = openCallback</div><div class="line">    <span class="keyword">this</span>.messageCallback = messageCallback</div><div class="line">    <span class="keyword">this</span>.closeCallback = closeCallback</div><div class="line">    <span class="keyword">this</span>.errorCallback = errorCallback</div><div class="line">    <span class="keyword">this</span>.socket</div><div class="line">    <span class="comment">// 重连标识，避免重复重连</span></div><div class="line">    <span class="keyword">this</span>.isInReconnect = <span class="literal">false</span></div><div class="line">    <span class="comment">// 重连次数</span></div><div class="line">    <span class="keyword">this</span>.reconnectCount = <span class="number">0</span></div><div class="line">    <span class="keyword">this</span>.createSocket(&#123; <span class="attr">url</span>: <span class="keyword">this</span>.url &#125;)</div><div class="line">  &#125;</div><div class="line">  <span class="comment">/**</span></div><div class="line"><span class="comment">   * 初始化websocket</span></div><div class="line"><span class="comment">   * @param &#123;String&#125; url 创建地址</span></div><div class="line"><span class="comment">   */</span></div><div class="line">  createSocket(&#123; url &#125;) &#123;</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">      <span class="keyword">this</span>.initListeners()</div><div class="line">      <span class="keyword">this</span>.socket = <span class="keyword">new</span> WebSocket(url)</div><div class="line">      <span class="keyword">this</span>.initEventMonitor()</div><div class="line">    &#125; <span class="keyword">catch</span> (e) &#123;</div><div class="line">      <span class="built_in">console</span>.error(<span class="string">'WebSocket创建连接失败'</span>)</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="comment">/**</span></div><div class="line"><span class="comment">   * 初始化ws事件监听</span></div><div class="line"><span class="comment">   */</span></div><div class="line">  initEventMonitor() &#123;</div><div class="line">    <span class="keyword">this</span>.onOpen()</div><div class="line">    <span class="keyword">this</span>.onMessage()</div><div class="line">    <span class="keyword">this</span>.onClose()</div><div class="line">    <span class="keyword">this</span>.onError()</div><div class="line">  &#125;</div><div class="line">  <span class="comment">/**</span></div><div class="line"><span class="comment">   * 建立连接函数</span></div><div class="line"><span class="comment">   */</span></div><div class="line">  onOpen() &#123;</div><div class="line">    <span class="keyword">this</span>.socket.addEventListener(<span class="string">'open'</span>, () =&gt; &#123;</div><div class="line">      <span class="comment">// 一旦建立成功，重置重连次数</span></div><div class="line">      <span class="keyword">this</span>.reconnectCount = <span class="number">0</span></div><div class="line">      <span class="keyword">this</span>.stopHeartBeat()</div><div class="line">      <span class="keyword">this</span>.startHeartBeat()</div><div class="line">      <span class="keyword">this</span>.clearAll()</div><div class="line">      <span class="comment">// 建立成功标识</span></div><div class="line">      <span class="keyword">this</span>.trigger(<span class="string">'websocketReady'</span>)</div><div class="line">      <span class="keyword">if</span> (<span class="keyword">this</span>.openCallback) &#123;</div><div class="line">        <span class="keyword">this</span>.openCallback(event)</div><div class="line">      &#125;</div><div class="line">    &#125;)</div><div class="line">  &#125;</div><div class="line">  <span class="comment">/**</span></div><div class="line"><span class="comment">   * 接收数据函数</span></div><div class="line"><span class="comment">   */</span></div><div class="line">  onMessage() &#123;</div><div class="line">    <span class="keyword">this</span>.socket.addEventListener(<span class="string">'message'</span>, (event) =&gt; &#123;</div><div class="line">      <span class="keyword">this</span>.refreshServerTimer()</div><div class="line">      <span class="keyword">if</span> (<span class="keyword">this</span>.messageCallback) &#123;</div><div class="line">        <span class="keyword">this</span>.messageCallback(event.data)</div><div class="line">      &#125;</div><div class="line">    &#125;)</div><div class="line">  &#125;</div><div class="line">  <span class="comment">/**</span></div><div class="line"><span class="comment">   * 关闭处理函数</span></div><div class="line"><span class="comment">   */</span></div><div class="line">  onClose() &#123;</div><div class="line">    <span class="keyword">this</span>.socket.addEventListener(<span class="string">'close'</span>, (event) =&gt; &#123;</div><div class="line">      <span class="built_in">console</span>.error(<span class="string">'WebSocket连接关闭，状态码：'</span> + event.code)</div><div class="line">      <span class="keyword">if</span> (<span class="keyword">this</span>.closeCallback) &#123;</div><div class="line">        <span class="keyword">this</span>.closeCallback(event)</div><div class="line">      &#125;</div><div class="line">      <span class="comment">// 需要重连并且重连次数小于等于重连上限</span></div><div class="line">      <span class="keyword">if</span> (<span class="keyword">this</span>.isNeedReconnect &amp;&amp; <span class="keyword">this</span>.reconnectCount &lt;= <span class="keyword">this</span>.reconnectLimit) &#123;</div><div class="line">        <span class="keyword">this</span>.reconnect()</div><div class="line">      &#125;</div><div class="line">    &#125;)</div><div class="line">  &#125;</div><div class="line">  <span class="comment">/**</span></div><div class="line"><span class="comment">   * 错误处理函数</span></div><div class="line"><span class="comment">   */</span></div><div class="line">  onError() &#123;</div><div class="line">    <span class="keyword">this</span>.socket.addEventListener(<span class="string">'error'</span>, (event) =&gt; &#123;</div><div class="line">      <span class="built_in">console</span>.error(<span class="string">'WebSocket in error'</span>)</div><div class="line">      <span class="keyword">if</span> (<span class="keyword">this</span>.errorCallback) &#123;</div><div class="line">        <span class="keyword">this</span>.errorCallback(event)</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">this</span>.doClose(&#123; <span class="attr">isNeedClose</span>: <span class="literal">false</span> &#125;)</div><div class="line">    &#125;)</div><div class="line">  &#125;</div><div class="line">  <span class="comment">/**</span></div><div class="line"><span class="comment">   * 发送消息</span></div><div class="line"><span class="comment">   * @param &#123;Object&#125; params 参数对象</span></div><div class="line"><span class="comment">   */</span></div><div class="line">  sendMessage(params) &#123;</div><div class="line">    <span class="comment">// 发送时先判断连接是否关闭</span></div><div class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.isSocketCloseing() || <span class="keyword">this</span>.isSocketClose()) &#123;</div><div class="line">      <span class="comment">// 需要重连，并且连接次数已经超过了上限（之前就触发过自动重连，并且在上限之内没有连接上）</span></div><div class="line">      <span class="keyword">if</span> (<span class="keyword">this</span>.reconnectCount &gt; <span class="keyword">this</span>.reconnectLimit &amp;&amp; <span class="keyword">this</span>.isNeedReconnect) &#123;</div><div class="line">        <span class="comment">// 重置连接次数</span></div><div class="line">        <span class="keyword">this</span>.reconnectCount = <span class="number">0</span></div><div class="line">        <span class="keyword">this</span>.reconnect()</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 如果已经成功的建立了链接，则直接发送，否则监听websocketReady成功再发送</span></div><div class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.isSocketOpen()) &#123;</div><div class="line">      <span class="keyword">this</span>.socket.send(<span class="built_in">JSON</span>.stringify(params))</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'发送参数'</span>, params)</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      <span class="comment">// 监听websocketReady事件，发送消息</span></div><div class="line">      <span class="keyword">this</span>.on(<span class="string">'websocketReady'</span>, () =&gt; &#123;</div><div class="line">        <span class="keyword">this</span>.socket.send(<span class="built_in">JSON</span>.stringify(params))</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'发送参数'</span>, params)</div><div class="line">      &#125;)</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="comment">/**</span></div><div class="line"><span class="comment">   * 重连机制</span></div><div class="line"><span class="comment">   */</span></div><div class="line">  reconnect() &#123;</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.isInReconnect) &#123;</div><div class="line">      <span class="keyword">return</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">this</span>.isInReconnect = <span class="literal">true</span></div><div class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">      <span class="comment">// url生成一个参数标识告知服务端是重连的请求（服务端可以不处理）</span></div><div class="line">      <span class="keyword">this</span>.createSocket(&#123; <span class="attr">url</span>: <span class="keyword">this</span>.urlAddParams(&#123; <span class="attr">url</span>: <span class="keyword">this</span>.url, <span class="attr">key</span>: <span class="string">'reconnect'</span>, <span class="attr">val</span>: <span class="string">'true'</span> &#125;) &#125;)</div><div class="line">      <span class="comment">// 重连次数加1</span></div><div class="line">      <span class="keyword">this</span>.reconnectCount++</div><div class="line">      <span class="keyword">this</span>.isInReconnect = <span class="literal">false</span></div><div class="line">    &#125;, <span class="number">2000</span> * <span class="keyword">this</span>.reconnectCount)</div><div class="line">  &#125;</div><div class="line">  <span class="comment">/**</span></div><div class="line"><span class="comment">   * 关闭socket</span></div><div class="line"><span class="comment">   * @param &#123;Boolean&#125; isNeedClose 是否需要真的关闭socket</span></div><div class="line"><span class="comment">   */</span></div><div class="line">  doClose(&#123; isNeedClose &#125;) &#123;</div><div class="line">    <span class="comment">// 判断是否关闭标识来决定是否需要重连</span></div><div class="line">    <span class="keyword">this</span>.isNeedReconnect = isNeedClose ? <span class="literal">false</span> : <span class="literal">true</span></div><div class="line">    clearTimeout(<span class="keyword">this</span>.serverHeartBeatTimer)</div><div class="line">    <span class="keyword">this</span>.stopHeartBeat()</div><div class="line">    <span class="keyword">this</span>.socket.close()</div><div class="line">  &#125;</div><div class="line">  <span class="comment">/**</span></div><div class="line"><span class="comment">   * 开始心跳机制(15秒发送一次ping)</span></div><div class="line"><span class="comment">   */</span></div><div class="line">  startHeartBeat() &#123;</div><div class="line">    <span class="keyword">this</span>.heartBeatTimer = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">      <span class="keyword">this</span>.socket.send(<span class="string">'ping'</span>)</div><div class="line">    &#125;, <span class="number">15000</span>)</div><div class="line">  &#125;</div><div class="line">  <span class="comment">/**</span></div><div class="line"><span class="comment">   * 停止心跳机制</span></div><div class="line"><span class="comment">   */</span></div><div class="line">  stopHeartBeat() &#123;</div><div class="line">    clearInterval(<span class="keyword">this</span>.heartBeatTimer)</div><div class="line">  &#125;</div><div class="line">  <span class="comment">/**</span></div><div class="line"><span class="comment">   * 超时掉线计时（1分钟超时）</span></div><div class="line"><span class="comment">   */</span></div><div class="line">  refreshServerTimer() &#123;</div><div class="line">    clearTimeout(<span class="keyword">this</span>.serverHeartBeatTimer)</div><div class="line">    <span class="keyword">this</span>.serverHeartBeatTimer = setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">      <span class="keyword">this</span>.doClose(&#123; <span class="attr">isNeedClose</span>: <span class="literal">false</span> &#125;)</div><div class="line">    &#125;, <span class="number">60000</span>)</div><div class="line">  &#125;</div><div class="line">  <span class="comment">/**</span></div><div class="line"><span class="comment">   * 检查socket是否正在连接</span></div><div class="line"><span class="comment">   * @return &#123;Boolean&#125; 是否正在连接</span></div><div class="line"><span class="comment">   */</span></div><div class="line">  isSocketConnecting() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.socket.readyState === WebSocket.CONNECTING</div><div class="line">  &#125;</div><div class="line">  <span class="comment">/**</span></div><div class="line"><span class="comment">   * 检查socket是否连接成功</span></div><div class="line"><span class="comment">   * @return &#123;Boolean&#125; 是否建立连接成功</span></div><div class="line"><span class="comment">   */</span></div><div class="line">  isSocketOpen() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.socket.readyState === WebSocket.OPEN</div><div class="line">  &#125;</div><div class="line">  <span class="comment">/**</span></div><div class="line"><span class="comment">   * 检查socket是否正在关闭</span></div><div class="line"><span class="comment">   * @return &#123;Boolean&#125; 是否正在关闭</span></div><div class="line"><span class="comment">   */</span></div><div class="line">  isSocketCloseing() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.socket.readyState === WebSocket.CLOSING</div><div class="line">  &#125;</div><div class="line">  <span class="comment">/**</span></div><div class="line"><span class="comment">   * 检查socket是否已经关闭</span></div><div class="line"><span class="comment">   * @return &#123;Boolean&#125; 是否已经关闭</span></div><div class="line"><span class="comment">   */</span></div><div class="line">  isSocketClose() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.socket.readyState === WebSocket.CLOSED</div><div class="line">  &#125;</div><div class="line">  <span class="comment">/**</span></div><div class="line"><span class="comment">   * 动态拼接参数</span></div><div class="line"><span class="comment">   * @param &#123;String&#125; url 地址</span></div><div class="line"><span class="comment">   * @param &#123;String&#125; key 参数名</span></div><div class="line"><span class="comment">   * @param &#123;String&#125; val 参数值</span></div><div class="line"><span class="comment">   * @returns &#123;String&#125; 地址</span></div><div class="line"><span class="comment">   */</span></div><div class="line">  urlAddParams(&#123; url, key, val &#125;) &#123;</div><div class="line">    <span class="keyword">return</span> url.indexOf(<span class="string">'?'</span>) !== <span class="number">-1</span> ? url + <span class="string">`&amp;<span class="subst">$&#123;key&#125;</span>=<span class="subst">$&#123;val&#125;</span>`</span> : url + <span class="string">`?<span class="subst">$&#123;key&#125;</span>=<span class="subst">$&#123;val&#125;</span>`</span></div><div class="line">  &#125;</div><div class="line">  <span class="comment">/**</span></div><div class="line"><span class="comment">   * 初始化监听器</span></div><div class="line"><span class="comment">   */</span></div><div class="line">  initListeners() &#123;</div><div class="line">    <span class="keyword">this</span>.listeners = &#123;&#125;</div><div class="line">  &#125;</div><div class="line">  <span class="comment">/**</span></div><div class="line"><span class="comment">   * 事件订阅</span></div><div class="line"><span class="comment">   * @param &#123;Sting&#125; eventName 事件名</span></div><div class="line"><span class="comment">   * @param &#123;Function&#125; callback 回调函数</span></div><div class="line"><span class="comment">   */</span></div><div class="line">  on(eventName, callback) &#123;</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.listeners[eventName] &amp;&amp; <span class="keyword">this</span>.listeners[eventName].length) &#123;</div><div class="line">      <span class="keyword">if</span> (<span class="keyword">this</span>.listeners[eventName].indexOf(callback) === <span class="number">-1</span>) &#123;</div><div class="line">        <span class="keyword">this</span>.listeners[eventName].push(callback)</div><div class="line">      &#125;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      <span class="keyword">this</span>.listeners[eventName] = [callback]</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="comment">/**</span></div><div class="line"><span class="comment">   * 发布事件</span></div><div class="line"><span class="comment">   * @param &#123;Sting&#125; eventName 事件名</span></div><div class="line"><span class="comment">   */</span></div><div class="line">  trigger(eventName) &#123;</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.listeners[eventName]) &#123;</div><div class="line">      <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>.listeners[eventName].length; i++) &#123;</div><div class="line">        <span class="comment">// [].slice.call(arguments, 1) =&gt; 将arguments转换成数组</span></div><div class="line">        <span class="keyword">this</span>.listeners[eventName][i].apply(<span class="keyword">this</span>, [].slice.call(<span class="built_in">arguments</span>, <span class="number">1</span>))</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="comment">/**</span></div><div class="line"><span class="comment">   * 重置监听器</span></div><div class="line"><span class="comment">   */</span></div><div class="line">  clearAll() &#123;</div><div class="line">    <span class="keyword">let</span> tmp = <span class="keyword">this</span>.listeners[<span class="string">'ready'</span>]</div><div class="line">    <span class="keyword">this</span>.listeners = &#123;&#125;</div><div class="line">    <span class="keyword">this</span>.listeners[<span class="string">'ready'</span>] = tmp</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> Socket</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/30/玩转JS函数节流和函数防抖/" rel="next" title="玩转JS函数节流和函数防抖">
+                <i class="fa fa-chevron-left"></i> 玩转JS函数节流和函数防抖
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/superman.jpg"
+               alt="Wang Yijin" />
+          <p class="site-author-name" itemprop="name">Wang Yijin</p>
+           
+              <p class="site-description motion-element" itemprop="description">莫道君行早，更有早行人。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/facebesidewyj" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Websocket详解"><span class="nav-number">1.</span> <span class="nav-text">Websocket详解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-number">1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优点及适用场景"><span class="nav-number">1.2.</span> <span class="nav-text">优点及适用场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#API"><span class="nav-number">1.3.</span> <span class="nav-text">API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#封装一个socket组件"><span class="nav-number">1.4.</span> <span class="nav-text">封装一个socket组件</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wang Yijin</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

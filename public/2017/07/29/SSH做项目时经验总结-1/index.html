@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="填坑经验," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/superman.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="SSH做项目时经验总结-1">
+<meta name="keywords" content="填坑经验">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SSH做项目时经验总结(1)">
+<meta property="og:url" content="http://yoursite.com/2017/07/29/SSH做项目时经验总结-1/index.html">
+<meta property="og:site_name" content="Gladiator&#39;s Blog">
+<meta property="og:description" content="SSH做项目时经验总结-1">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-07-29T13:48:14.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SSH做项目时经验总结(1)">
+<meta name="twitter:description" content="SSH做项目时经验总结-1">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/07/29/SSH做项目时经验总结-1/"/>
+
+
+
+
+
+  <title>SSH做项目时经验总结(1) | Gladiator's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Gladiator's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/29/SSH做项目时经验总结-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wang Yijin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/superman.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Gladiator's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">SSH做项目时经验总结(1)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-29T21:43:59+08:00">
+                2017-07-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/遇到的坑/" itemprop="url" rel="index">
+                    <span itemprop="name">遇到的坑</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  SSH做项目时经验总结-1
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">1、</div><div class="line">    application.xml导入其他子文件</div><div class="line">    &lt;import resource=&quot;applicationContext-staff.xml&quot;/&gt;</div><div class="line">    Struts.xm1导入其他子文件</div><div class="line">    &lt;include file=&quot;struts/struts-staff.xml&quot;&gt;&lt;/include&gt;</div><div class="line">2、</div><div class="line">    统一访问界面的UIAction </div><div class="line">    &lt;action name=&quot;uiAction_*_*&quot;&gt;</div><div class="line">        &lt;result&gt;/WEB-INF/pages/&#123;1&#125;/&#123;2&#125;.jsp&lt;/result&gt;</div><div class="line">    &lt;/action&gt;</div><div class="line">例如：&lt;frame src=&quot;$&#123;pageContext.request.contextPath&#125;/uiAction_fram`这里写代码片`e_left1.action&quot; scrolling=&quot;no&quot;/&gt;</div><div class="line">3、</div><div class="line">登录拦截器</div><div class="line">protected String doIntercept(ActionInvocation invocation) throws Exception &#123;</div><div class="line">        //获得session中的对象</div><div class="line">        Object obj = ActionContext.getContext().getSession().get(&quot;staff&quot;);</div><div class="line">        if(obj == null)&#123;</div><div class="line">            //获得当前action</div><div class="line">            Object action = invocation.getAction();</div><div class="line">            //判断是否继承了ActionSupport</div><div class="line">            if(action instanceof ActionSupport)&#123;</div><div class="line">                ActionSupport actionSupport = (ActionSupport) action;</div><div class="line">                //使用ActionSupport类添加提示信息</div><div class="line">                actionSupport.addFieldError(&quot;&quot;, &quot;您还未登录，请登录！&quot;);</div><div class="line">            &#125;</div><div class="line">            //未登录，需要登录</div><div class="line">            return &quot;login&quot;;</div><div class="line">        &#125;</div><div class="line">        //登录过，直接放行</div><div class="line">        return invocation.invoke();</div><div class="line">    &#125;</div><div class="line">4、</div><div class="line"> 延长session关闭时间，配置spring的OpenSessionInViewFilter过滤器,并且要在struts核心过滤器前面</div><div class="line">    &lt;filter&gt;</div><div class="line">        &lt;filter-name&gt;sessionFilter&lt;/filter-name&gt;</div><div class="line">        &lt;filter-class&gt;org.springframework.orm.hibernate3.support.OpenSessionInViewFilter&lt;/filter-class&gt;</div><div class="line">    &lt;/filter&gt;</div><div class="line">    &lt;filter-mapping&gt;</div><div class="line">        &lt;filter-name&gt;sessionFilter&lt;/filter-name&gt;</div><div class="line">        &lt;url-pattern&gt;/*&lt;/url-pattern&gt;</div><div class="line">    &lt;/filter-mapping&gt;</div><div class="line">5、</div><div class="line">遍历时偶数判断</div><div class="line">&lt;s:iterator value=&quot;allStaff&quot; status=&quot;vs&quot;&gt;</div><div class="line">&lt;!-- vs.even表示判断是否为偶数，并把vs记录的遍历信息存入小mapActionContext中 --&gt;</div><div class="line">    &lt;tr class=&quot;&lt;s:property value=&quot;#vs.even ? &apos;tabtd2&apos;:&apos;tabtd1&apos;&quot;/&gt;&quot;&gt; </div><div class="line">6、</div><div class="line">以注入方式配置actionName和名称空间</div><div class="line">&lt;result name=&quot;edit&quot; type=&quot;redirectAction&quot;&gt;</div><div class="line">    &lt;param name=&quot;namespace&quot;&gt;/&lt;/param&gt;</div><div class="line">    &lt;param name=&quot;actionName&quot;&gt;staffAction_findAll&lt;/param&gt;</div><div class="line">&lt;/result&gt;</div><div class="line">7、</div><div class="line">修饰日期，先用date标签修饰格式，在调用var属性存入ActionContext中 </div><div class="line">&lt;s:date name=&quot;onDutyDate&quot; format=&quot;yyyy-MM-dd&quot; var=&quot;dutyDate&quot;/&gt;</div><div class="line">            &lt;s:textfield name=&quot;onDutyDate&quot; readonly=&quot;true&quot; value=&quot;%&#123;#dutyDate&#125;&quot; /&gt;</div><div class="line">8、</div><div class="line">select标签的使用及listKey和listValue使用</div><div class="line">&lt;td width=&quot;10%&quot;&gt;所属部门：&lt;/td&gt;</div><div class="line">&lt;td width=&quot;20%&quot;&gt;</div><div class="line">    &lt;s:select list=&quot;findAllDepartment&quot; name=&quot;post.department.depId&quot; onchange=&quot;&quot; </div><div class="line">    listKey=&quot;depId&quot; listValue=&quot;depName&quot; headerKey=&quot;&quot; headerValue=&quot;----请--选--择----&quot;&gt;</div><div class="line">    &lt;/s:select&gt;</div><div class="line">&lt;/td&gt;</div><div class="line">&lt;td width=&quot;8%&quot;&gt;职务：&lt;/td&gt;</div><div class="line">&lt;td width=&quot;62%&quot;&gt;</div><div class="line">    &lt;%-- 如果职工表中的数据没有职务，则会报异常，所以要进行判断 --%&gt;</div><div class="line">    &lt;s:select list=&quot;post != null ? post.department.postSet : &#123;&#125;&quot; name=&quot;post.postId&quot; id=&quot;selectPostId&quot;</div><div class="line">    listKey=&quot;postId&quot; listValue=&quot;postName&quot; headerKey=&quot;&quot; headerValue=&quot;----请--选--择----&quot;&gt;</div><div class="line">    &lt;/s:select&gt;</div><div class="line">&lt;/td&gt;</div><div class="line">9、</div><div class="line">使用select，需要在action中获得需要的数据，并压入栈</div><div class="line">需要手动获得所有部门的集合，因为关联数据中没有部门集合这一字段</div><div class="line">List&lt;CrmDepartment&gt; findAllDepartment = departmentService.findAllDepartment();</div><div class="line">ActionContext.getContext().getValueStack().set(&quot;findAllDepartment&quot;, findAllDepartment);</div><div class="line">10、</div><div class="line">服务器处理ajax数据</div><div class="line">public String findAllWithDepartment() throws Exception&#123;</div><div class="line">    List&lt;CrmPost&gt; findAllWithDepartment = postService.findAllWithDepartment(crmPost.getDepartment());</div><div class="line">    //将java对象装换为json数据</div><div class="line">    //1.排除不需要的数据</div><div class="line">    JsonConfig jsonConfig = new JsonConfig();</div><div class="line">    jsonConfig.setExcludes(new String[]&#123;&quot;department&quot;,&quot;staffSet&quot;&#125;);</div><div class="line">    //2.转换</div><div class="line">    String jsonData = JSONArray.fromObject(findAllWithDepartment, jsonConfig).toString();</div><div class="line">    //3.处理乱码</div><div class="line">    ServletActionContext.getResponse().setContentType(&quot;text/html;charset=UTF-8&quot;);</div><div class="line">    //4.发送给浏览器</div><div class="line">    ServletActionContext.getResponse().getWriter().print(jsonData);</div><div class="line">    return &quot;none&quot;;</div><div class="line">&#125;</div><div class="line">ajax代码</div><div class="line">&lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">        function showPost(obj)&#123;</div><div class="line">            //选中部门</div><div class="line">            var depId = obj.value</div><div class="line">            //发送ajax通过部门查询职务</div><div class="line">            //1.获得引擎</div><div class="line">            var xmlhttp;</div><div class="line">            if (window.XMLHttpRequest)&#123;</div><div class="line">                // code for IE7+, Firefox, Chrome, Opera, Safari</div><div class="line">                 xmlhttp=new XMLHttpRequest();</div><div class="line">            &#125;</div><div class="line">            else&#123;</div><div class="line">                // code for IE6, IE5</div><div class="line">                 xmlhttp=new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);</div><div class="line">            &#125;</div><div class="line">            //2.设置回调函数</div><div class="line">            xmlhttp.onreadystatechange() = function()&#123;</div><div class="line">                if(xmlhttp.readyState == 4 &amp;&amp; xmlhttp.status == 200)&#123;</div><div class="line">                    //获得返回的数据</div><div class="line">                    var text = xmlhttp.responseText;</div><div class="line">                    //把数据装换成数组</div><div class="line">                    var jsonData = eval(&quot;(&quot;+text+&quot;)&quot;);</div><div class="line">                    //获得select标签</div><div class="line">                    var postSelectElement = document.getElementById(&quot;selectPostId&quot;); </div><div class="line">                    postSelectElement.innerHTML = &quot;&lt;option value=&apos;&apos;&gt;----请--选--择----&lt;/option&gt;&quot;;</div><div class="line">                    //进行遍历</div><div class="line">                    for(i = 0; i &lt; jsonData.length; i++)&#123;</div><div class="line">                        var post = jsonData[i];</div><div class="line">                        //获得Id</div><div class="line">                        var postId = post.postId;</div><div class="line">                        //获得名称</div><div class="line">                        var postName = post.postName;</div><div class="line">                        //修改html标签内容</div><div class="line">                        postSelectElement.innerHTML += &quot;&lt;option value=&apos;&quot;+postId+&quot;&apos;&gt;&quot;+postName+&quot;&lt;/option&gt;&quot;;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;;</div><div class="line">            //3.创建链接</div><div class="line">            var url = &quot;$&#123;pageContext.request.contextPath&#125;/postAction_findAllWithDepartment?department.depId=&quot;+depId;</div><div class="line">            xmlhttp.open(&quot;GET&quot;, url);</div><div class="line">            //4.发送请求,如果使用POST方法，send（depId）应传入值</div><div class="line">            xmlhttp.send(null);</div><div class="line">        &#125;</div><div class="line">    &lt;/script&gt;</div><div class="line">11、</div><div class="line">条件查询拼接语句的思路</div><div class="line">@Override</div><div class="line">    public List&lt;CrmCourseType&gt; findCourseByCondition(CrmCourseType crmCourseType) &#123;</div><div class="line">        // 用于拼接HQL语句</div><div class="line">        StringBuilder builder = new StringBuilder();</div><div class="line">        // 用来封装参数，list有序，可以重复</div><div class="line">        List&lt;Object&gt; list = new ArrayList&lt;Object&gt;();</div><div class="line">        builder.append(&quot;from CrmCourseType where 1=1&quot;);</div><div class="line">        // 课程类别</div><div class="line">        if (StringUtils.isNotBlank(crmCourseType.getCourseName())) &#123;</div><div class="line">            builder.append(&quot; and courseName like ? &quot;);</div><div class="line">            list.add(&quot;%&quot; + crmCourseType.getCourseName() + &quot;%&quot;);</div><div class="line">        &#125;</div><div class="line">        // 课程简介</div><div class="line">        if (StringUtils.isNotBlank(crmCourseType.getRemark())) &#123;</div><div class="line">            builder.append(&quot; and remark like ? &quot;);</div><div class="line">            list.add(&quot;%&quot; + crmCourseType.getRemark() + &quot;%&quot;);</div><div class="line">        &#125;</div><div class="line">        // 学时</div><div class="line">        if (StringUtils.isNotBlank(crmCourseType.getTotalStart())) &#123;</div><div class="line">            builder.append(&quot; and total &gt;= ? &quot;);</div><div class="line">            list.add(Integer.parseInt(crmCourseType.getTotalStart()));</div><div class="line">        &#125;</div><div class="line">        if (StringUtils.isNotBlank(crmCourseType.getTotalEnd())) &#123;</div><div class="line">            builder.append(&quot; and total &lt;= ? &quot;);</div><div class="line">            list.add(Integer.parseInt(crmCourseType.getTotalEnd()));</div><div class="line">        &#125;</div><div class="line">        // 费用</div><div class="line">        if (StringUtils.isNotBlank(crmCourseType.getLessonCostStart())) &#123;</div><div class="line">            builder.append(&quot; and courseCost &gt;= ? &quot;);</div><div class="line">            list.add(Double.parseDouble(crmCourseType.getLessonCostStart()));</div><div class="line">        &#125;</div><div class="line">        if (StringUtils.isNotBlank(crmCourseType.getLessonCostEnd())) &#123;</div><div class="line">            builder.append(&quot; and courseCost &lt;= ? &quot;);</div><div class="line">            list.add(Double.parseDouble(crmCourseType.getLessonCostEnd()));</div><div class="line">        &#125;</div><div class="line">        return coursetypeDao.findCourseByCondition(builder.toString(),</div><div class="line">                list.toArray());</div><div class="line">    &#125;</div><div class="line">12、</div><div class="line">更新和添加写在一起时要在页面中判断Id是否应该传入，如果是添加数据，没有id则使用hidden标签传入id会报错</div><div class="line">&lt;s:if test=&quot;courseTypeId != null&quot;&gt;</div><div class="line">        &lt;s:hidden name=&quot;courseTypeId&quot; value=&quot;%&#123;courseTypeId&#125;&quot;/&gt;</div><div class="line">&lt;/s:if&gt;</div><div class="line">13、</div><div class="line">标签回显action也要判断Id，如果不判断会报异常</div><div class="line">if(StringUtils.isNotBlank(crmCourseType.getCourseTypeId()))&#123;</div><div class="line">            CrmCourseType findCourse = coursetypeService.findCourseById(crmCourseType);</div><div class="line">            ActionContext.getContext().getValueStack().push(findCourse);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/填坑经验/" rel="tag"># 填坑经验</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/29/SSH做项目时经验总结-2/" rel="next" title="SSH做项目时经验总结(2)">
+                <i class="fa fa-chevron-left"></i> SSH做项目时经验总结(2)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/29/SSH做项目时经验总结-3/" rel="prev" title="SSH做项目时经验总结(3)">
+                SSH做项目时经验总结(3) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/superman.jpg"
+               alt="Wang Yijin" />
+          <p class="site-author-name" itemprop="name">Wang Yijin</p>
+           
+              <p class="site-description motion-element" itemprop="description">莫道君行早，更有早行人。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/facebesidewyj" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wang Yijin</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
