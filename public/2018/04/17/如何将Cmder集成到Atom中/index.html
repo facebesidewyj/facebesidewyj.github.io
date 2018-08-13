@@ -360,9 +360,9 @@
         <h1 id="如何将Cmder集成到Atom中"><a href="#如何将Cmder集成到Atom中" class="headerlink" title="如何将Cmder集成到Atom中"></a>如何将Cmder集成到Atom中</h1><ol>
 <li>在Cmder根目录中创建文件atom.bat，将下列命令写入</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@echo off </div><div class="line">SET CMDER_ROOT=C:\Path\To\cmder #注释（去掉） Cmder安装根目录</div><div class="line">%CMDER_ROOT%\vendor\init.bat</div></pre></td></tr></table></figure>
-<ol>
-<li><p>安装Atom插件 <a href="https://atom.io/packages/platformio-ide-terminal" target="_blank" rel="external">platformio-ide-terminal</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@echo off </span><br><span class="line">SET CMDER_ROOT=C:\Path\To\cmder #注释（去掉） Cmder安装根目录</span><br><span class="line">%CMDER_ROOT%\vendor\init.bat</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li><p>安装Atom插件 <a href="https://atom.io/packages/platformio-ide-terminal" target="_blank" rel="noopener">platformio-ide-terminal</a></p>
 </li>
 <li><p>安装完毕后在插件的setting中的配置如下：</p>
 <p> Auto Run Command:</p>
