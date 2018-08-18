@@ -71,6 +71,15 @@ WebSocket一种在单个 TCP 连接上进行全双工通讯的协议，它由通
  * websocket请求封装
  * @class
  */
+// 最佳心跳间隔（15秒）
+const HEART_INTERVAL = 15000
+// 心跳超时（1分钟）
+const OVERTIME = 60000
+// 重连上限默认值
+const RECONNECT_LIMIT = 7
+// 重连间隔基值（2秒）
+const RECONNECT_INTERVAL = 2000
+
 class Socket {
   /**
    * @constructs Socket
@@ -81,15 +90,17 @@ class Socket {
    * @param {Function} messageCallback 监听消息回调函数
    * @param {Function} closeCallback 关闭连接回调函数
    * @param {Function} errorCallback 异常回调函数
+   * @param {Function} connectionLimitCallback 超出重连上限回调函数
    */
-  constructor({ url, isNeedReconnect, reconnectLimit, openCallback, messageCallback, closeCallback, errorCallback }) {
+  constructor({ url, isNeedReconnect, reconnectLimit, openCallback, messageCallback, closeCallback, errorCallback, connectionLimitCallback }) {
     this.url = url
     this.isNeedReconnect = isNeedReconnect
-    this.reconnectLimit = reconnectLimit || 7
+    this.reconnectLimit = reconnectLimit || RECONNECT_LIMIT
     this.openCallback = openCallback
     this.messageCallback = messageCallback
     this.closeCallback = closeCallback
     this.errorCallback = errorCallback
+    this.connectionLimitCallback = connectionLimitCallback
     this.socket
     // 重连标识，避免重复重连
     this.isInReconnect = false
@@ -159,6 +170,11 @@ class Socket {
       // 需要重连并且重连次数小于等于重连上限
       if (this.isNeedReconnect && this.reconnectCount <= this.reconnectLimit) {
         this.reconnect()
+        // 超过重连上线执行回调
+      } else if (this.reconnectCount > this.reconnectLimit) {
+        if (this.connectionLimitCallback) {
+          this.connectionLimitCallback(event)
+        }
       }
     })
   }
@@ -179,6 +195,18 @@ class Socket {
    * @param {Object} params 参数对象
    */
   sendMessage(params) {
+    this.readyToSendMessage({
+      success: () => {
+        this.socket.send(JSON.stringify(params))
+        console.log('发送参数', params)
+      }
+    })
+  }
+  /**
+   * 保证发送状态就绪
+   * @param {Function} success 成功回调
+   */
+  readyToSendMessage({ success }) {
     // 发送时先判断连接是否关闭
     if (this.isSocketCloseing() || this.isSocketClose()) {
       // 需要重连，并且连接次数已经超过了上限（之前就触发过自动重连，并且在上限之内没有连接上）
@@ -191,13 +219,15 @@ class Socket {
 
     // 如果已经成功的建立了链接，则直接发送，否则监听websocketReady成功再发送
     if (this.isSocketOpen()) {
-      this.socket.send(JSON.stringify(params))
-      console.log('发送参数', params)
+      if (success) {
+        success()
+      }
     } else {
       // 监听websocketReady事件，发送消息
       this.on('websocketReady', () => {
-        this.socket.send(JSON.stringify(params))
-        console.log('发送参数', params)
+        if (success) {
+          success()
+        }
       })
     }
   }
@@ -215,7 +245,7 @@ class Socket {
       // 重连次数加1
       this.reconnectCount++
       this.isInReconnect = false
-    }, 2000 * this.reconnectCount)
+    }, RECONNECT_INTERVAL * this.reconnectCount)
   }
   /**
    * 关闭socket
@@ -234,7 +264,7 @@ class Socket {
   startHeartBeat() {
     this.heartBeatTimer = setInterval(() => {
       this.socket.send('ping')
-    }, 15000)
+    }, HEART_INTERVAL)
   }
   /**
    * 停止心跳机制
@@ -249,7 +279,7 @@ class Socket {
     clearTimeout(this.serverHeartBeatTimer)
     this.serverHeartBeatTimer = setTimeout(() => {
       this.doClose({ isNeedClose: false })
-    }, 60000)
+    }, OVERTIME)
   }
   /**
    * 检查socket是否正在连接
@@ -325,9 +355,9 @@ class Socket {
    * 重置监听器
    */
   clearAll() {
-    let tmp = this.listeners['ready']
+    let tmp = this.listeners['websocketReady']
     this.listeners = {}
-    this.listeners['ready'] = tmp
+    this.listeners['websocketReady'] = tmp
   }
 }
 
