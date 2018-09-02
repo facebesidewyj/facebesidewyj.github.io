@@ -101,7 +101,7 @@
 <meta property="og:site_name" content="Gladiator&#39;s Blog">
 <meta property="og:description" content="CSS动画入门">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-03T01:34:26.000Z">
+<meta property="og:updated_time" content="2018-09-02T16:08:02.078Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS动画知多少">
 <meta name="twitter:description" content="CSS动画入门">
@@ -383,6 +383,9 @@
  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="attribute">transition-property</span>: all;</span><br><span class="line">    <span class="attribute">trasition-duration</span>: <span class="number">1s</span>;</span><br><span class="line">    <span class="attribute">transition-timing-function</span>: linear;</span><br><span class="line">    <span class="attribute">trasition-delay</span>: <span class="number">1s</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="attribute">transition</span>: all <span class="number">1s</span> linear <span class="number">1s</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
+<h3 id="监听事件"><a href="#监听事件" class="headerlink" title="监听事件"></a>监听事件</h3><p><code>transitionend</code> 事件会在 CSS transition结束后触发. 当transition完成前移除transition时，比如移除css的<code>transition-property</code>属性，事件将不会被触发.如在transition完成前设置  <code>display</code> 为<code>none</code>，事件同样不会被触发。</p>
+<p>示例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleTransition</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Transition 已完成'</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">'dom'</span>).addEventListener(<span class="string">"transitionend"</span>, handleTransition, <span class="literal">false</span>)</span><br></pre></td></tr></table></figure>
 <h2 id="Animation"><a href="#Animation" class="headerlink" title="Animation"></a>Animation</h2><hr>
 <p>由于transition需要触发，并且只能执行一次，并不能定义中间状态。于是CSS3又引入了Animation属性。</p>
 <h3 id="Animation属性"><a href="#Animation属性" class="headerlink" title="Animation属性"></a>Animation属性</h3><ol>
@@ -413,6 +416,11 @@
 - alternate：动画在0%到100%反复执行。
 - alternate-reverse: 动画在100%到0%反复执行。
 </code></pre></li>
+</ol>
+<h3 id="监听事件-1"><a href="#监听事件-1" class="headerlink" title="监听事件"></a>监听事件</h3><ol>
+<li><code>animationstart</code> 事件会在 CSS 动画开始时触发。 如果有 <code>animation-delay</code> 延时，事件会在延迟时效过后立即触发。为负数的延时时长会致使事件被触发时事件的 <code>elapsedTime</code> 属性值等于该时长的绝对值（并且，相应地，动画将直接播放该时长绝对值之后的动画）。</li>
+<li><code>animationend</code> 事件会在一个 CSS 动画完成时触发（不包括完成前就已终止的情况，例如元素变得不可见或者动画从元素中移除）。</li>
+<li>动画的迭代结束时会触发<code>animationiteration</code>事件。<code>animation-iteration-count</code>为1的动画不会发生此事件。</li>
 </ol>
 <h2 id="Transform"><a href="#Transform" class="headerlink" title="Transform"></a>Transform</h2><hr>
 <p>transform属性应用于元素 2D 或 3D 转换。该属性允许我们对元素进行旋转、缩放、移动或倾斜。</p>
@@ -626,7 +634,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CSS3动画"><span class="nav-number">1.</span> <span class="nav-text">CSS3动画</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS3动画的优势："><span class="nav-number">1.0.1.</span> <span class="nav-text">CSS3动画的优势：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS3动画的劣势："><span class="nav-number">1.0.2.</span> <span class="nav-text">CSS3动画的劣势：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Transition"><span class="nav-number">1.1.</span> <span class="nav-text">Transition</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Transition属性"><span class="nav-number">1.1.1.</span> <span class="nav-text">Transition属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Animation"><span class="nav-number">1.2.</span> <span class="nav-text">Animation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Animation属性"><span class="nav-number">1.2.1.</span> <span class="nav-text">Animation属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Transform"><span class="nav-number">1.3.</span> <span class="nav-text">Transform</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Transform属性值"><span class="nav-number">1.3.1.</span> <span class="nav-text">Transform属性值</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CSS3动画"><span class="nav-number">1.</span> <span class="nav-text">CSS3动画</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS3动画的优势："><span class="nav-number">1.0.1.</span> <span class="nav-text">CSS3动画的优势：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS3动画的劣势："><span class="nav-number">1.0.2.</span> <span class="nav-text">CSS3动画的劣势：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Transition"><span class="nav-number">1.1.</span> <span class="nav-text">Transition</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Transition属性"><span class="nav-number">1.1.1.</span> <span class="nav-text">Transition属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#监听事件"><span class="nav-number">1.1.2.</span> <span class="nav-text">监听事件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Animation"><span class="nav-number">1.2.</span> <span class="nav-text">Animation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Animation属性"><span class="nav-number">1.2.1.</span> <span class="nav-text">Animation属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#监听事件-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">监听事件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Transform"><span class="nav-number">1.3.</span> <span class="nav-text">Transform</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Transform属性值"><span class="nav-number">1.3.1.</span> <span class="nav-text">Transform属性值</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
