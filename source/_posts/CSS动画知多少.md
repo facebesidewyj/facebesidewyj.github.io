@@ -73,7 +73,22 @@ description: CSS动画入门
 	}
 	```
 
+### 监听事件
+
+`transitionend` 事件会在 CSS transition结束后触发. 当transition完成前移除transition时，比如移除css的`transition-property`属性，事件将不会被触发.如在transition完成前设置  `display` 为`none`，事件同样不会被触发。
+
+示例：
+
+```js
+function handleTransition() {
+    console.log('Transition 已完成')
+}
+
+document.querySelector('dom').addEventListener("transitionend", handleTransition, false)
+```
+
 ## Animation
+
 ---
 
 由于transition需要触发，并且只能执行一次，并不能定义中间状态。于是CSS3又引入了Animation属性。
@@ -133,7 +148,14 @@ description: CSS动画入门
 		- alternate：动画在0%到100%反复执行。
 		- alternate-reverse: 动画在100%到0%反复执行。
 
+### 监听事件
+
+1. `animationstart` 事件会在 CSS 动画开始时触发。 如果有 `animation-delay` 延时，事件会在延迟时效过后立即触发。为负数的延时时长会致使事件被触发时事件的 `elapsedTime` 属性值等于该时长的绝对值（并且，相应地，动画将直接播放该时长绝对值之后的动画）。
+2. `animationend` 事件会在一个 CSS 动画完成时触发（不包括完成前就已终止的情况，例如元素变得不可见或者动画从元素中移除）。
+3. 动画的迭代结束时会触发`animationiteration`事件。`animation-iteration-count`为1的动画不会发生此事件。
+
 ## Transform
+
 ---
 
 transform属性应用于元素 2D 或 3D 转换。该属性允许我们对元素进行旋转、缩放、移动或倾斜。
