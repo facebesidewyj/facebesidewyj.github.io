@@ -93,18 +93,29 @@
 
 
 
-<meta name="description" content="理解函数节流和函数防抖">
+<meta name="description" content="JavaScript调试技巧">
 <meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="玩转JS函数节流和函数防抖">
-<meta property="og:url" content="http://yoursite.com/2018/06/30/玩转JS函数节流和函数防抖/index.html">
+<meta property="og:title" content="前端开发应该学会的JavaScript调试Bug技巧">
+<meta property="og:url" content="http://yoursite.com/2018/12/09/前端开发应该学会的JavaScript调试技巧/index.html">
 <meta property="og:site_name" content="Gladiator&#39;s Blog">
-<meta property="og:description" content="理解函数节流和函数防抖">
+<meta property="og:description" content="JavaScript调试技巧">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-15T14:03:20.000Z">
+<meta property="og:image" content="http://yoursite.com/Users/gladiator/Desktop/企业微信截图_cd5ea0ea-09fc-44d4-8a76-ee80e84165db.png">
+<meta property="og:image" content="http://yoursite.com/Users/gladiator/Desktop/企业微信截图_6f6ca455-08d2-4dda-b2a5-fb6911228f64.png">
+<meta property="og:image" content="http://yoursite.com/Users/gladiator/Desktop/企业微信截图_c3b50f65-474d-44f2-b29a-80197fe6ebab.png">
+<meta property="og:image" content="http://yoursite.com/Users/gladiator/Desktop/企业微信截图_bd761f19-048e-40e1-8506-a0e71f36e3a2.png">
+<meta property="og:image" content="http://yoursite.com/Users/gladiator/Desktop/企业微信截图_50ae6605-ee58-458f-ab6c-52262c8df337.png">
+<meta property="og:image" content="http://yoursite.com/Users/gladiator/Desktop/企业微信截图_5cca3485-41e2-41e0-ac37-671580e63872.png">
+<meta property="og:image" content="http://yoursite.com/Users/gladiator/Desktop/企业微信截图_5cca3485-41e2-41e0-ac37-671580e63872.png">
+<meta property="og:image" content="http://yoursite.com/Users/gladiator/Desktop/企业微信截图_0b266779-82f4-4a80-a97d-8ebf23008647.png">
+<meta property="og:image" content="http://yoursite.com/Users/gladiator/Desktop/0_hyuaGwUfClHRIpuk.png">
+<meta property="og:image" content="http://yoursite.com/Users/gladiator/Desktop/企业微信截图_bd761f19-048e-40e1-8506-a0e71f36e3a2.png">
+<meta property="og:updated_time" content="2018-12-09T14:39:35.947Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="玩转JS函数节流和函数防抖">
-<meta name="twitter:description" content="理解函数节流和函数防抖">
+<meta name="twitter:title" content="前端开发应该学会的JavaScript调试Bug技巧">
+<meta name="twitter:description" content="JavaScript调试技巧">
+<meta name="twitter:image" content="http://yoursite.com/Users/gladiator/Desktop/企业微信截图_cd5ea0ea-09fc-44d4-8a76-ee80e84165db.png">
 
 
 
@@ -132,13 +143,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/06/30/玩转JS函数节流和函数防抖/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/12/09/前端开发应该学会的JavaScript调试技巧/"/>
 
 
 
 
 
-  <title>玩转JS函数节流和函数防抖 | Gladiator's Blog</title>
+  <title>前端开发应该学会的JavaScript调试Bug技巧 | Gladiator's Blog</title>
   
 
 
@@ -267,7 +278,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/30/玩转JS函数节流和函数防抖/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/09/前端开发应该学会的JavaScript调试技巧/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Wang Yijin">
@@ -284,7 +295,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">玩转JS函数节流和函数防抖</h1>
+          <h1 class="post-title" itemprop="name headline">前端开发应该学会的JavaScript调试Bug技巧</h1>
         
 
         <div class="post-meta">
@@ -296,8 +307,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-30T23:04:19+08:00">
-                2018-06-30
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-09T21:24:46+08:00">
+                2018-12-09
               </time>
             
 
@@ -343,7 +354,7 @@
 
           
               <div class="post-description">
-                  理解函数节流和函数防抖
+                  JavaScript调试技巧
               </div>
           
 
@@ -357,26 +368,103 @@
       
 
       
-        <h1 id="函数防抖"><a href="#函数防抖" class="headerlink" title="函数防抖"></a>函数防抖</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>事件在触发后的n秒执行回调，如果在n秒内多次触发回调函数，则回调函数只执行一次。<br>例如：有人进入电梯，电梯会在一定5秒后启动，如果又有人进入电梯，则电梯需要再等5秒才启动</p>
-<blockquote>
-<p>事件多次触发只执行一次</p>
-</blockquote>
-<h2 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h2><ol>
-<li>防止多次提交</li>
-<li>监听滚动事件，触发回调</li>
-<li>监听输入框输入，执行对应方法时</li>
+        <p>熟练使用Chrome DevTools来调试JS代码是每个前端的必备技能，大多数新手前端工程师喜欢用console.log()打印相关上下文信息来调试代码。</p>
+<p><strong>console.log()调试带来的问题</strong>：</p>
+<ol>
+<li>使用console.log()打印调试比较繁琐，而且不能很快定位出问题点，缺乏效率。</li>
+<li>需要多次手写代码，一不小心忘记删除也会造成线上代码不美观。</li>
 </ol>
-<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 防抖函数</span></span><br><span class="line"><span class="comment"> * @param  &#123;Function&#125; func  要执行防抖的函数</span></span><br><span class="line"><span class="comment"> * @param  &#123;Number&#125; delay   延迟时间</span></span><br><span class="line"><span class="comment"> * @return &#123;Function&#125;       执行防抖函数的函数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">debounce(func, delay) &#123;</span><br><span class="line">    <span class="keyword">let</span> timer = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">...args</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (timer) &#123;</span><br><span class="line">            clearTimeout(timer);</span><br><span class="line">        &#125;</span><br><span class="line">        timer = setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            func.apply(<span class="keyword">this</span>, args);</span><br><span class="line">        &#125;, delay);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="函数节流"><a href="#函数节流" class="headerlink" title="函数节流"></a>函数节流</h1><h2 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h2><p>函数在单位时间内只能触发一次，如果在单位时间内多次触发，只能生效一次。<br>例如：动画的播放，一秒钟只播放24张图片</p>
-<blockquote>
-<p>大量事件按一定平均频率触发</p>
-</blockquote>
-<h2 id="适用场景-1"><a href="#适用场景-1" class="headerlink" title="适用场景"></a>适用场景</h2><ol>
-<li>页面刷新频率</li>
-<li>Dom元素拖拽</li>
-<li>Canvas动画</li>
+<h1 id="第一步：复现Bug"><a href="#第一步：复现Bug" class="headerlink" title="第一步：复现Bug"></a>第一步：复现Bug</h1><p>调试bug的第一步就是要多次复现Bug，如果不是稳定复现的Bug，解决起来将会非常麻烦，只能靠经验推测。</p>
+<p>所以在遇到Bug时，要尽可能需要多次重现 Bug，减少不必要的步骤。</p>
+<p>我们通过一个测试的Demo来逐步修复Bug：</p>
+<ul>
+<li><a href="https://googlechrome.github.io/devtools-samples/debug-js/get-started" target="_blank" rel="noopener">Demo地址</a></li>
+<li>Demo中输入1和2，结果为12，这明显是一个需要修复的Bug</li>
+</ul>
+<h1 id="第二步：使用Chrome-DevTools的断点暂停代码执行"><a href="#第二步：使用Chrome-DevTools的断点暂停代码执行" class="headerlink" title="第二步：使用Chrome DevTools的断点暂停代码执行"></a>第二步：使用Chrome DevTools的断点暂停代码执行</h1><p>Chrome DevTools可以在代码运行期间通过设置断点来暂停代码，并且在暂停区间可以看到当前上下文中变量的值。</p>
+<ol>
+<li>打开Chrome控制面板</li>
+<li>点击<strong>Sources</strong>标签</li>
+<li>点击<strong>Event Listener Breakpoints</strong>，这是一个事件监听断点选择列表</li>
+<li>展开在<strong>Mouse</strong>项</li>
+<li>选中<strong>click</strong>复选框</li>
 </ol>
-<h2 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 节流函数</span></span><br><span class="line"><span class="comment"> * @param  &#123;Function&#125; func  要执行节流的函数</span></span><br><span class="line"><span class="comment"> * @param  &#123;Number&#125; gapTime 间隔时间</span></span><br><span class="line"><span class="comment"> * @return &#123;Function&#125;       执行节流函数的函数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">throttle</span>(<span class="params">fun, gapTime</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> _lastTime = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">let</span> _nowTime = +<span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line">        <span class="keyword">if</span> (_nowTime - _lastTime &gt; gapTime || !_lastTime) &#123;</span><br><span class="line">            fun();</span><br><span class="line">            _lastTime = _nowTime</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/Users/gladiator/Desktop/企业微信截图_cd5ea0ea-09fc-44d4-8a76-ee80e84165db.png" alt=""></p>
+<ol start="6">
+<li>这时，再次点击按钮“Add Number 1 and Number 2”，代码会暂停运行。</li>
+</ol>
+<blockquote>
+<p>选择“click”时，Chrome DevTools会在所有click事件上设置基于事件的断点。click任何节点，并且该节点具有click事件时，DevTools会自动暂停到该节点的click处理程序的第一行。</p>
+</blockquote>
+<h1 id="第三步：逐步调试代码，发现问题"><a href="#第三步：逐步调试代码，发现问题" class="headerlink" title="第三步：逐步调试代码，发现问题"></a>第三步：逐步调试代码，发现问题</h1><p>逐步调试代码可以让我们清楚代码运行情况，找出代码所在的问题点。</p>
+<ul>
+<li>在<strong>Sources</strong>标签中，点击<strong>Step into next function call</strong></li>
+</ul>
+<p><img src="/Users/gladiator/Desktop/企业微信截图_6f6ca455-08d2-4dda-b2a5-fb6911228f64.png" alt=""></p>
+<p>这个按钮能让你逐步查看 onClick() 函数的运行，每次运行一行。</p>
+<ul>
+<li><p>点击<strong>Step over next function call</strong>按钮</p>
+<p><img src="/Users/gladiator/Desktop/企业微信截图_c3b50f65-474d-44f2-b29a-80197fe6ebab.png" alt=""></p>
+</li>
+</ul>
+<p>它会让 DevTools 执行 inputsAreEmpty() 而不进入该函数的代码。</p>
+<h1 id="第四步：设置行断点"><a href="#第四步：设置行断点" class="headerlink" title="第四步：设置行断点"></a>第四步：设置行断点</h1><p>代码行断点是我们在开发中经常用的一种断点。它可以让代码暂停在指定的一行。</p>
+<ul>
+<li>查看 updateLabel() 中的最后一行代码，如下所示：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">label.textContent = addend1 + &apos; + &apos; + addend2 + &apos; = &apos; + sum;</span><br></pre></td></tr></table></figure>
+<p>这行代码显然是问题所在，在这行设置行断点。</p>
+<ul>
+<li>点击<strong>Resume script execution</strong>按钮</li>
+</ul>
+<p><img src="/Users/gladiator/Desktop/企业微信截图_bd761f19-048e-40e1-8506-a0e71f36e3a2.png" alt="img"></p>
+<p>这段代码会持续执行，直到问题所在的断点行停止。</p>
+<ul>
+<li>查看 updateLabel() 中已执行的代码行。DevTools 会显示 addend1，addend2 和 sum 的值。</li>
+</ul>
+<p>sum 的值明显问题，求值结果应该是数字，但这里却是字符串。这就是造成 bug 的原因。</p>
+<p><img src="/Users/gladiator/Desktop/企业微信截图_50ae6605-ee58-458f-ab6c-52262c8df337.png" alt=""></p>
+<h1 id="第五步：检查变量值"><a href="#第五步：检查变量值" class="headerlink" title="第五步：检查变量值"></a>第五步：检查变量值</h1><p>造成 Bug 的一个常见原因就是变量或函数产生了异常值。</p>
+<p>DevTools 上有个替代 console.log() 的工具叫 <strong>Watch Expressions</strong>，使用 <strong>Watch Expressions</strong> 能够监控变量值随着时间的变化。<strong>Watch Expressions</strong> 并不仅仅能监控变量，你可以将任何有效的 JavaScript 表达式存储在 <strong>Watch Expressions</strong> 中。</p>
+<ul>
+<li>在 DevTools 上的<strong>Sources</strong>面板上点击<strong>Watch</strong>，展开这部分。</li>
+<li>点击<strong>Add Expression</strong></li>
+</ul>
+<p><img src="/Users/gladiator/Desktop/企业微信截图_5cca3485-41e2-41e0-ac37-671580e63872.png" alt="img"></p>
+<ul>
+<li>输入 <code>typeof sum</code></li>
+<li>按 Enter 键，DevTools 会显示 <code>typeof sum: &quot;string&quot;</code>。</li>
+</ul>
+<p><img src="/Users/gladiator/Desktop/企业微信截图_5cca3485-41e2-41e0-ac37-671580e63872.png" alt="img"></p>
+<p>这里可以看到，sum 被处理成了字符串。这就是Bug的来源。</p>
+<p>DevTools 中另一个能取代 console.log() 的工具是 <strong>Console</strong>，可以使用 <strong>Console</strong> 对任意 JavaScript 语句求值。</p>
+<ul>
+<li>按下Esc可以打开 <strong>Console</strong>，显示在DevTools窗口底部。</li>
+<li>在 <strong>Console</strong> 中输入<code>parseInt(addend1) + parseInt(addend2)</code></li>
+<li>按 Enter 键，DevTools 会对语句求值，输出结果。</li>
+</ul>
+<p><img src="/Users/gladiator/Desktop/企业微信截图_0b266779-82f4-4a80-a97d-8ebf23008647.png" alt="img"></p>
+<h1 id="第六步：修复问题"><a href="#第六步：修复问题" class="headerlink" title="第六步：修复问题"></a>第六步：修复问题</h1><p>确定Bug问题所在之后，剩下就是编辑代码，尝试修复，并重新运行 Demo。直接在DevTools中就可以修复代码，步骤如下：</p>
+<ol>
+<li><p>在 DevTools 的<strong>Sources</strong>面板的代码编辑器中，用 <code>var sum = parseInt(addend1) + parseInt(addend2)</code> 替换 <code>var sum = addend1 + addend2</code>。</p>
+</li>
+<li><p>按 Command+S（Mac）或 Ctrl+S（Windows，Linux）保存修改。代码被修改。</p>
+</li>
+<li><p>点击 <strong>Deactivate breakpoints</strong></p>
+</li>
+</ol>
+<p><img src="/Users/gladiator/Desktop/0_hyuaGwUfClHRIpuk.png" alt="img"></p>
+<p>它变为蓝色表示正处于活动状态。如果这样设置，DevTools 会忽略你设置的任何断点。</p>
+<ol start="4">
+<li>点击<strong>Resume script execution</strong></li>
+</ol>
+<p><img src="/Users/gladiator/Desktop/企业微信截图_bd761f19-048e-40e1-8506-a0e71f36e3a2.png" alt="img"></p>
+<ol start="5">
+<li>在项目中修改对应的代码，Bug解决了。</li>
+</ol>
+<blockquote>
+<p><strong>参考资料：</strong><br><strong><a href="https://codeburst.io/learn-how-to-debug-javascript-with-chrome-devtools-9514c58479db" target="_blank" rel="noopener">https://codeburst.io/learn-how-to-debug-javascript-with-chrome-devtools-9514c58479db</a></strong></p>
+</blockquote>
 
       
     </div>
@@ -419,8 +507,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/19/移动端滚动进阶/" rel="next" title="移动端滚动进阶">
-                <i class="fa fa-chevron-left"></i> 移动端滚动进阶
+              <a href="/2018/07/15/打造自己的Websocket组件/" rel="next" title="打造自己的Websocket组件">
+                <i class="fa fa-chevron-left"></i> 打造自己的Websocket组件
               </a>
             
           </div>
@@ -428,10 +516,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/07/15/打造自己的Websocket组件/" rel="prev" title="打造自己的Websocket组件">
-                打造自己的Websocket组件 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -572,7 +656,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#函数防抖"><span class="nav-number">1.</span> <span class="nav-text">函数防抖</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-number">1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#适用场景"><span class="nav-number">1.2.</span> <span class="nav-text">适用场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例"><span class="nav-number">1.3.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数节流"><span class="nav-number">2.</span> <span class="nav-text">函数节流</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义-1"><span class="nav-number">2.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#适用场景-1"><span class="nav-number">2.2.</span> <span class="nav-text">适用场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例-1"><span class="nav-number">2.3.</span> <span class="nav-text">示例</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第一步：复现Bug"><span class="nav-number">1.</span> <span class="nav-text">第一步：复现Bug</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第二步：使用Chrome-DevTools的断点暂停代码执行"><span class="nav-number">2.</span> <span class="nav-text">第二步：使用Chrome DevTools的断点暂停代码执行</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第三步：逐步调试代码，发现问题"><span class="nav-number">3.</span> <span class="nav-text">第三步：逐步调试代码，发现问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第四步：设置行断点"><span class="nav-number">4.</span> <span class="nav-text">第四步：设置行断点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第五步：检查变量值"><span class="nav-number">5.</span> <span class="nav-text">第五步：检查变量值</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第六步：修复问题"><span class="nav-number">6.</span> <span class="nav-text">第六步：修复问题</span></a></li></ol></div>
             
 
           </div>

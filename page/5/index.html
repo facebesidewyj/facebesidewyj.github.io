@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="笔记,JavaScript," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -93,18 +93,16 @@
 
 
 
-<meta name="description" content="JavaScript高级程序设计读书笔记--第2章在HTML中使用JavaScript">
-<meta name="keywords" content="笔记,JavaScript">
-<meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript高级程序设计读书笔记-第2章">
-<meta property="og:url" content="http://yoursite.com/2017/07/30/JavaScript高级程序设计读书笔记-第2章/index.html">
+<meta name="description" content="莫道君行早，更有早行人。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Gladiator&#39;s Blog">
+<meta property="og:url" content="http://yoursite.com/page/5/index.html">
 <meta property="og:site_name" content="Gladiator&#39;s Blog">
-<meta property="og:description" content="JavaScript高级程序设计读书笔记--第2章在HTML中使用JavaScript">
+<meta property="og:description" content="莫道君行早，更有早行人。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-22T14:22:36.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaScript高级程序设计读书笔记-第2章">
-<meta name="twitter:description" content="JavaScript高级程序设计读书笔记--第2章在HTML中使用JavaScript">
+<meta name="twitter:title" content="Gladiator&#39;s Blog">
+<meta name="twitter:description" content="莫道君行早，更有早行人。">
 
 
 
@@ -132,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/07/30/JavaScript高级程序设计读书笔记-第2章/"/>
+  <link rel="canonical" href="http://yoursite.com/page/5/"/>
 
 
 
 
 
-  <title>JavaScript高级程序设计读书笔记-第2章 | Gladiator's Blog</title>
+  <title>Gladiator's Blog</title>
   
 
 
@@ -163,7 +161,9 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left 
+   page-home 
+ ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -256,9 +256,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-expand">
     
+      
 
   
 
@@ -267,7 +267,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/30/JavaScript高级程序设计读书笔记-第2章/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/29/Mybatis学习中遇到的异常(1)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Wang Yijin">
@@ -284,7 +284,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JavaScript高级程序设计读书笔记-第2章</h1>
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/07/29/Mybatis学习中遇到的异常(1)/" itemprop="url">Mybatis学习中遇到的异常(1)</a></h1>
         
 
         <div class="post-meta">
@@ -296,8 +298,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-30T16:01:54+08:00">
-                2017-07-30
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-29T11:50:55+08:00">
+                2017-07-29
               </time>
             
 
@@ -319,8 +321,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JS高程笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">JS高程笔记</span>
+                  <a href="/categories/遇到的坑/" itemprop="url" rel="index">
+                    <span itemprop="name">遇到的坑</span>
                   </a>
                 </span>
 
@@ -342,10 +344,6 @@
           
 
           
-              <div class="post-description">
-                  JavaScript高级程序设计读书笔记--第2章在HTML中使用JavaScript
-              </div>
-          
 
         </div>
       </header>
@@ -357,96 +355,54 @@
       
 
       
-        <h1 id="lt-script-gt-元素"><a href="#lt-script-gt-元素" class="headerlink" title="&lt;script&gt;元素"></a>&lt;script&gt;元素</h1><p>HTML4.01为&lt;script&gt;定义了下列6个属性：</p>
-<ul>
-<li>async：可选属性，表示立即下载该脚本，只对外部脚本有效。</li>
-<li>charset：可选属性，通过src属性指定的代码字符集。</li>
-<li>defer：可选属性，表示脚本可以延迟到文档完全被解析和显示之后再执行，只对外部脚本有效。</li>
-<li>language：已废弃。</li>
-<li>src：可选属性，表示要执行代码的外部文件。</li>
-<li>type：可选属性，表示编写代码使用的脚本语言的内容类型(MIME类型)。<br>使用script元素的方式有两种：</li>
-</ul>
-<ol>
-<li>直接在页面中嵌入JavaScript代码：在&lt;script&gt;内部的代码将被从上至下依次解析。</li>
-<li>包含外部JavaScript文件：浏览器会按照引入顺序从上至下依次解析<strong>(被依赖的js文件要在依赖js文件的上面)</strong>。<h2 id="1-标签的位置"><a href="#1-标签的位置" class="headerlink" title="(1)标签的位置"></a>(1)标签的位置</h2></li>
-</ol>
-<ul>
-<li>传统的做法：放在&lt;head&gt;元素中。</li>
-<li>现代Web程序：放在&lt;body&gt;元素中的最后位置<strong>(避免出现加载空白的延迟)</strong>。<h2 id="2-延迟脚本"><a href="#2-延迟脚本" class="headerlink" title="(2)延迟脚本"></a>(2)延迟脚本</h2>设置defer属性后，会告知浏览器脚本会被延迟到整个页面都被解析后再执行(立即下载，但延迟执行)。<h2 id="3-异步脚本"><a href="#3-异步脚本" class="headerlink" title="(3)异步脚本"></a>(3)异步脚本</h2>设置async属性与defer相似，但async只适用于外部js文件，告知<strong>浏览器立即下载文件，但js文件执行顺序并不一定按照引入的先后顺序执行</strong>。<h2 id="4-在XHTML中的用法"><a href="#4-在XHTML中的用法" class="headerlink" title="(4)在XHTML中的用法"></a>(4)在XHTML中的用法</h2>HTML5正在快速的被接受和采用，建议遵循H5标准。<br>这里提一下<strong>CDATA片段：&lt;![CDATA[不需要被XML解析的内容]]&gt;</strong>。<h2 id="5-不推荐使用的语法"><a href="#5-不推荐使用的语法" class="headerlink" title="(5)不推荐使用的语法"></a>(5)不推荐使用的语法</h2><h1 id="嵌入代码与外部文件"><a href="#嵌入代码与外部文件" class="headerlink" title="嵌入代码与外部文件"></a>嵌入代码与外部文件</h1>一般认为最好的做法还是引入外部文件，也就是说将写好的js代码封装到文件里，这么做的好处有：<strong>可维护性、可缓存(加快页面加载速度)、适应未来</strong>。<h1 id="文档模式"><a href="#文档模式" class="headerlink" title="文档模式"></a>文档模式</h1>混杂模式和标准模式。<h1 id="lt-noscript-gt-模式"><a href="#lt-noscript-gt-模式" class="headerlink" title="&lt;noscript&gt;模式"></a>&lt;noscript&gt;模式</h1>&lt;noscript&gt;元素中的内容只会在不支持脚本和脚本被禁用的浏览器中显示出来，增加友好提示。<br>例如：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;noscript&gt;</span><br><span class="line">    &lt;p&gt;本页面需要浏览器支持JavaScript&lt;/p&gt;</span><br><span class="line">&lt;/noscript&gt;</span><br></pre></td></tr></table></figure></li>
-</ul>
-
+        
+          Mybatis学习中遇到的异常
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/29/Mybatis学习中遇到的异常(1)/">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
       
     </div>
 
     <div>
       
-        
-
-      
     </div>
 
     <div>
       
-        
-
-      
     </div>
 
     <div>
-      
-        
-
       
     </div>
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/笔记/" rel="tag"># 笔记</a>
-          
-            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
-          
-        </div>
+
+      
+
       
 
       
       
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2017/07/30/JavaScript高级程序设计读书笔记-第1章/" rel="next" title="JavaScript高级程序设计读书笔记--第1章">
-                <i class="fa fa-chevron-left"></i> JavaScript高级程序设计读书笔记--第1章
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/07/31/JavaScript高级程序设计读书笔记-第3章/" rel="prev" title="JavaScript高级程序设计读书笔记-第3章">
-                JavaScript高级程序设计读书笔记-第3章 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
+        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
+    
+  </section>
 
-    <div class="post-spread">
-      
-    </div>
-  </div>
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
+  </nav>
+
 
 
           </div>
@@ -454,10 +410,6 @@
 
 
           
-  <div class="comments" id="comments">
-    
-  </div>
-
 
         </div>
         
@@ -478,17 +430,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/superman.jpg"
@@ -561,22 +504,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#lt-script-gt-元素"><span class="nav-number">1.</span> <span class="nav-text">&lt;script&gt;元素</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-标签的位置"><span class="nav-number">1.1.</span> <span class="nav-text">(1)标签的位置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-延迟脚本"><span class="nav-number">1.2.</span> <span class="nav-text">(2)延迟脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-异步脚本"><span class="nav-number">1.3.</span> <span class="nav-text">(3)异步脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-在XHTML中的用法"><span class="nav-number">1.4.</span> <span class="nav-text">(4)在XHTML中的用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-不推荐使用的语法"><span class="nav-number">1.5.</span> <span class="nav-text">(5)不推荐使用的语法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#嵌入代码与外部文件"><span class="nav-number">2.</span> <span class="nav-text">嵌入代码与外部文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文档模式"><span class="nav-number">3.</span> <span class="nav-text">文档模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lt-noscript-gt-模式"><span class="nav-number">4.</span> <span class="nav-text">&lt;noscript&gt;模式</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -697,10 +624,10 @@
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
-
+  
 
   
 
