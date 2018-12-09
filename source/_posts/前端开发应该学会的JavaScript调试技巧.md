@@ -35,7 +35,7 @@ Chrome DevTools可以在代码运行期间通过设置断点来暂停代码，�
 4. 展开在**Mouse**项
 5. 选中**click**复选框
 
-![](/Users/gladiator/Desktop/企业微信截图_cd5ea0ea-09fc-44d4-8a76-ee80e84165db.png)
+![](https://github.com/facebesidewyj/facebesidewyj.github.io/blob/master/images/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_cd5ea0ea-09fc-44d4-8a76-ee80e84165db.png)
 
 6. 这时，再次点击按钮“Add Number 1 and Number 2”，代码会暂停运行。
 
@@ -47,13 +47,13 @@ Chrome DevTools可以在代码运行期间通过设置断点来暂停代码，�
 
 * 在**Sources**标签中，点击**Step into next function call**
 
-![](/Users/gladiator/Desktop/企业微信截图_6f6ca455-08d2-4dda-b2a5-fb6911228f64.png)
+![](https://github.com/facebesidewyj/facebesidewyj.github.io/blob/master/images/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_6f6ca455-08d2-4dda-b2a5-fb6911228f64.png)
 
 这个按钮能让你逐步查看 onClick() 函数的运行，每次运行一行。
 
 * 点击**Step over next function call**按钮
 
-  ![](/Users/gladiator/Desktop/企业微信截图_c3b50f65-474d-44f2-b29a-80197fe6ebab.png)
+  ![](https://github.com/facebesidewyj/facebesidewyj.github.io/blob/master/images/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_6f6ca455-08d2-4dda-b2a5-fb6911228f64.png)
 
 它会让 DevTools 执行 inputsAreEmpty() 而不进入该函数的代码。
 
@@ -73,7 +73,7 @@ label.textContent = addend1 + ' + ' + addend2 + ' = ' + sum;
 
 
 
-![img](/Users/gladiator/Desktop/企业微信截图_bd761f19-048e-40e1-8506-a0e71f36e3a2.png)
+![img](https://github.com/facebesidewyj/facebesidewyj.github.io/blob/master/images/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_bd761f19-048e-40e1-8506-a0e71f36e3a2.png)
 
 这段代码会持续执行，直到问题所在的断点行停止。
 
@@ -81,7 +81,7 @@ label.textContent = addend1 + ' + ' + addend2 + ' = ' + sum;
 
 sum 的值明显问题，求值结果应该是数字，但这里却是字符串。这就是造成 bug 的原因。
 
-![](/Users/gladiator/Desktop/企业微信截图_50ae6605-ee58-458f-ab6c-52262c8df337.png)
+![](https://github.com/facebesidewyj/facebesidewyj.github.io/blob/master/images/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_50ae6605-ee58-458f-ab6c-52262c8df337.png)
 
 # 第五步：检查变量值
 
@@ -92,14 +92,14 @@ DevTools 上有个替代 console.log() 的工具叫 **Watch Expressions**，使�
 - 在 DevTools 上的**Sources**面板上点击**Watch**，展开这部分。
 - 点击**Add Expression**
 
-![img](/Users/gladiator/Desktop/企业微信截图_5cca3485-41e2-41e0-ac37-671580e63872.png)
+![img](https://github.com/facebesidewyj/facebesidewyj.github.io/blob/master/images/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_5cca3485-41e2-41e0-ac37-671580e63872.png)
 
 
 
 - 输入 `typeof sum`
 - 按 Enter 键，DevTools 会显示 `typeof sum: "string"`。
 
-![img](/Users/gladiator/Desktop/企业微信截图_5cca3485-41e2-41e0-ac37-671580e63872.png)
+![img](https://github.com/facebesidewyj/facebesidewyj.github.io/blob/master/images/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_803f22d6-0575-404f-912f-15e9c9205cd9.png)
 
 这里可以看到，sum 被处理成了字符串。这就是Bug的来源。
 
@@ -109,7 +109,7 @@ DevTools 中另一个能取代 console.log() 的工具是 **Console**，可以�
 - 在 **Console** 中输入`parseInt(addend1) + parseInt(addend2)`
 - 按 Enter 键，DevTools 会对语句求值，输出结果。
 
-![img](/Users/gladiator/Desktop/企业微信截图_0b266779-82f4-4a80-a97d-8ebf23008647.png)
+![img](https://github.com/facebesidewyj/facebesidewyj.github.io/blob/master/images/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_0b266779-82f4-4a80-a97d-8ebf23008647.png)
 
 
 
@@ -123,13 +123,13 @@ DevTools 中另一个能取代 console.log() 的工具是 **Console**，可以�
 
 3. 点击 **Deactivate breakpoints**
 
-![img](/Users/gladiator/Desktop/0_hyuaGwUfClHRIpuk.png)
+![img](https://github.com/facebesidewyj/facebesidewyj.github.io/blob/master/images/0_hyuaGwUfClHRIpuk.png)
 
 它变为蓝色表示正处于活动状态。如果这样设置，DevTools 会忽略你设置的任何断点。
 
 4. 点击**Resume script execution**
 
-![img](/Users/gladiator/Desktop/企业微信截图_bd761f19-048e-40e1-8506-a0e71f36e3a2.png)
+![img](https://github.com/facebesidewyj/facebesidewyj.github.io/blob/master/images/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_bd761f19-048e-40e1-8506-a0e71f36e3a2.png)
 
 5. 在项目中修改对应的代码，Bug解决了。
 
