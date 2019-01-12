@@ -127,4 +127,4 @@ DevTools 中另一个能取代 console.log() 的工具是 **Console**，可以�
 
 5. 在项目中修改对应的代码，Bug 解决了。
 
-> **参考资料：** > **https://codeburst.io/learn-how-to-debug-javascript-with-chrome-devtools-9514c58479db**
+> **参考资料：**  **https://codeburst.io/learn-how-to-debug-javascript-with-chrome-devtools-9514c58479db**
