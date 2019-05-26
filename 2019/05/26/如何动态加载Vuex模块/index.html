@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="填坑经验," />
+  <meta name="keywords" content="Vue," />
 
 
 
@@ -93,18 +93,18 @@
 
 
 
-<meta name="description" content="SSH做项目时经验总结-3">
-<meta name="keywords" content="填坑经验">
+<meta name="description" content="如何动态加载Vuex模块">
+<meta name="keywords" content="Vue">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SSH做项目时经验总结(3)">
-<meta property="og:url" content="http://yoursite.com/2017/07/29/SSH做项目时经验总结-3/index.html">
+<meta property="og:title" content="如何动态加载Vuex模块">
+<meta property="og:url" content="http://yoursite.com/2019/05/26/如何动态加载Vuex模块/index.html">
 <meta property="og:site_name" content="Gladiator&#39;s Blog">
-<meta property="og:description" content="SSH做项目时经验总结-3">
+<meta property="og:description" content="如何动态加载Vuex模块">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-09T14:45:14.197Z">
+<meta property="og:updated_time" content="2019-05-26T15:37:16.255Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SSH做项目时经验总结(3)">
-<meta name="twitter:description" content="SSH做项目时经验总结-3">
+<meta name="twitter:title" content="如何动态加载Vuex模块">
+<meta name="twitter:description" content="如何动态加载Vuex模块">
 
 
 
@@ -132,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/07/29/SSH做项目时经验总结-3/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/05/26/如何动态加载Vuex模块/"/>
 
 
 
 
 
-  <title>SSH做项目时经验总结(3) | Gladiator's Blog</title>
+  <title>如何动态加载Vuex模块 | Gladiator's Blog</title>
   
 
 
@@ -267,7 +267,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/29/SSH做项目时经验总结-3/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/26/如何动态加载Vuex模块/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Wang Yijin">
@@ -284,7 +284,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">SSH做项目时经验总结(3)</h1>
+          <h1 class="post-title" itemprop="name headline">如何动态加载Vuex模块</h1>
         
 
         <div class="post-meta">
@@ -296,8 +296,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-29T21:43:59+08:00">
-                2017-07-29
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-26T23:16:16+08:00">
+                2019-05-26
               </time>
             
 
@@ -319,8 +319,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/遇到的坑/" itemprop="url" rel="index">
-                    <span itemprop="name">遇到的坑</span>
+                  <a href="/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
                   </a>
                 </span>
 
@@ -343,7 +343,7 @@
 
           
               <div class="post-description">
-                  SSH做项目时经验总结-3
+                  如何动态加载Vuex模块
               </div>
           
 
@@ -357,11 +357,24 @@
       
 
       
-        <p><strong>SSH做项目时经验总结 （3）</strong><br>1.IllegalArgumentException occurred while calling setter of pers.yijin.bms.domain.User.messageList<br>hbm.xml文件与实体类文件还有数据库中的文件不匹配的情况就会出现</p>
-<p>2.Write operations are not allowed in read-only mode (FlushMode.MANUAL): Turn your Session into FlushMode.COMMIT/AUTO or remove ‘readOnly’ marker from transaction definition.<br>开启OpenSessionInViewFilter来阻止延迟加载的错误,我们开启OpenSessionInViewFilter这个过滤器的时候FlushMode就已经被默认设置为了MANUAL！<br>如果FlushMode是MANUAL或NEVEL,在操作过程中 hibernate会将事务设置为readonly，解决方法在过滤器中注入：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;init-param&gt;</span><br><span class="line">    &lt;param-name&gt;flushMode&lt;/param-name&gt;</span><br><span class="line">    &lt;param-value&gt;AUTO&lt;/param-value&gt;</span><br><span class="line">&lt;/init-param&gt;</span><br></pre></td></tr></table></figure>
-<p>3.hibernate延长session关闭时间后，删除数据需要flush()刷session</p>
-<p>4.直接把list压入栈struts2的iterator标签不能取值</p>
+        <blockquote>
+<p>Vuex是一种易于使用且高性能的解决方案，可以处理状态管理。它使管理大规模Vue.js应用程序变得轻而易举，它通过暴露Store来改变State，使我们的程序更加具有可测试性。</p>
+</blockquote>
+<p>我们可以在Vuex中自定义Store，例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> dogs = &#123;</span><br><span class="line">  state: &#123;</span><br><span class="line">    data: []</span><br><span class="line">  &#125;,</span><br><span class="line">  mutations: &#123;</span><br><span class="line">    addDog(state, dog) &#123;</span><br><span class="line">      state.data.push(dog)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">  modules: &#123;</span><br><span class="line">    dogs</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>一般来说，大型应用中业务较复杂，模块会有好多个，我们可以根据业务分模块，并在调用新的Vuex.Store时组合在一起。</p>
+<p>这样可以让我们的业务逻辑独立开来，不用在耦合在一起，每个模块，都可以有自己的Component和Store。</p>
+<p>通常，这是应用程序中常见的可重用模块的情况。例如，提供一些通知组件的通知模块和扩展应用程序商店的商店模块，添加一个可从应用程序中的任何位置访问的新模块。</p>
+<p>我们的模块还可以复用，例如，实现一个可复用的通知模块。</p>
+<h3 id="动态添加模块到Store"><a href="#动态添加模块到Store" class="headerlink" title="动态添加模块到Store"></a>动态添加模块到Store</h3><p>首先我们创建一个模块目录，起名notifications</p>
+<p>接着，添加一个带有Vuex模块的state.js：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  state: [],</span><br><span class="line">  mutations: &#123;</span><br><span class="line">    addNotification(state, notification) &#123;</span><br><span class="line">      state.push(notification);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>然后创建一个Notifications.vue文件，导入state.js。然后，通过$ store访问实例变量，我们实现一个测试方法用于获取状态并提交addNotification的Vuex存储：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;p v-for=&quot;notification in notifications&quot;&gt;</span><br><span class="line">      &#123;&#123;notification&#125;&#125;</span><br><span class="line">    &lt;/p&gt;</span><br><span class="line">    &lt;button @click=&quot;addHey&quot;&gt;Add Hey!&lt;/button&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import state from &quot;./state&quot;;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">  computed: &#123;</span><br><span class="line">    notifications() &#123;</span><br><span class="line">      return this.$store.state.notifications;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    addHey() &#123;</span><br><span class="line">      this.$store.commit(&quot;addNotification&quot;, &quot;Hey!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>当使用组件时，通知Vuex模块会自行添加，但我们还可以动态添加Vuex模块，使用Store的实例属性$ store.registerModule：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> state <span class="keyword">from</span> <span class="string">"./state"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  created() &#123;</span><br><span class="line">    <span class="keyword">this</span>.$store.registerModule(<span class="string">"notifications"</span>, state);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>现在，使用Notifications组件时将注册该模块。</p>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>大型应用程序中的Vuex存储通过不同业务模块可以很方便的进行解耦，使我们的业务模块独立，并具有可测试性。动态注入Vuex模块，可以提高应用的扩展性和可维护性。</p>
 
       
     </div>
@@ -391,7 +404,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/填坑经验/" rel="tag"># 填坑经验</a>
+            <a href="/tags/Vue/" rel="tag"># Vue</a>
           
         </div>
       
@@ -404,8 +417,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/29/SSH做项目时经验总结-2/" rel="next" title="SSH做项目时经验总结(2)">
-                <i class="fa fa-chevron-left"></i> SSH做项目时经验总结(2)
+              <a href="/2019/01/19/优雅的使用v-model进行双向绑定/" rel="next" title="优雅的使用v-model进行双向绑定">
+                <i class="fa fa-chevron-left"></i> 优雅的使用v-model进行双向绑定
               </a>
             
           </div>
@@ -413,10 +426,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/07/29/Maven配置环境变量出现的问题/" rel="prev" title="Maven配置环境变量出现的问题">
-                Maven配置环境变量出现的问题 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -464,8 +473,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/superman.jpg"
@@ -538,6 +556,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#动态添加模块到Store"><span class="nav-number">1.</span> <span class="nav-text">动态添加模块到Store</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#小结"><span class="nav-number">2.</span> <span class="nav-text">小结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
