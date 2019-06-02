@@ -93,18 +93,18 @@
 
 
 
-<meta name="description" content="谈谈对this关键字的认识">
+<meta name="description" content="理解JavaScript中的闭包概念">
 <meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="深入理解this关键字">
-<meta property="og:url" content="http://yoursite.com/2018/02/10/深入理解this关键字/index.html">
+<meta property="og:title" content="理解JavaScript中的闭包">
+<meta property="og:url" content="http://yoursite.com/2019/06/02/理解JavaScript中的闭包/index.html">
 <meta property="og:site_name" content="Gladiator&#39;s Blog">
-<meta property="og:description" content="谈谈对this关键字的认识">
+<meta property="og:description" content="理解JavaScript中的闭包概念">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-26T15:39:20.985Z">
+<meta property="og:updated_time" content="2019-06-02T14:27:50.689Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="深入理解this关键字">
-<meta name="twitter:description" content="谈谈对this关键字的认识">
+<meta name="twitter:title" content="理解JavaScript中的闭包">
+<meta name="twitter:description" content="理解JavaScript中的闭包概念">
 
 
 
@@ -132,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/02/10/深入理解this关键字/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/06/02/理解JavaScript中的闭包/"/>
 
 
 
 
 
-  <title>深入理解this关键字 | Gladiator's Blog</title>
+  <title>理解JavaScript中的闭包 | Gladiator's Blog</title>
   
 
 
@@ -267,7 +267,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/10/深入理解this关键字/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/02/理解JavaScript中的闭包/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Wang Yijin">
@@ -284,7 +284,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">深入理解this关键字</h1>
+          <h1 class="post-title" itemprop="name headline">理解JavaScript中的闭包</h1>
         
 
         <div class="post-meta">
@@ -296,8 +296,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-10T08:56:00+08:00">
-                2018-02-10
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-02T21:57:02+08:00">
+                2019-06-02
               </time>
             
 
@@ -343,7 +343,7 @@
 
           
               <div class="post-description">
-                  谈谈对this关键字的认识
+                  理解JavaScript中的闭包概念
               </div>
           
 
@@ -357,40 +357,24 @@
       
 
       
-        <h1 id="关于this"><a href="#关于this" class="headerlink" title="关于this"></a>关于this</h1><ol>
-<li>this关键字是JavaScript中最复杂的机制之一，它是一个很特别的关键字，被<strong>自动</strong>定义到所有的函数作用域中。</li>
-<li>this提供了一种更优雅的的方式来”隐式”传递一个对象的引用，因此可以将API设计的更加简洁易用。</li>
-<li>this在任何情况下都不指向函数的词法作用域，也不指向函数自身。</li>
-<li>this实际上是在函数被调用时发生绑定，它指向什么完全取决于函数在哪里被调用。</li>
-<li>this 总是指向调用它的那个对象，如果没有明确调用对象，则指向 window，在 node 环境中指向 Global 对象。</li>
-</ol>
-<blockquote>
-<p>注：在严格模式下，this 禁止指向 window 对象</p>
+        <blockquote>
+<p>JavaScript中闭包的概念一直很难理解，尽管闭包在开发中非常有用，但是其工作原理一直比较抽象。</p>
+<p>我们通过这篇文章向大家介绍下闭包的基础知识以及日常运用。</p>
 </blockquote>
-<h1 id="绑定规则"><a href="#绑定规则" class="headerlink" title="绑定规则"></a>绑定规则</h1><ol>
-<li><p>默认绑定</p>
-<p> 函数不带任何修饰的函数引用进行调用的，只能是默认绑定，非严格模式下this指向window对象，严格模式下为undefined，例如：</p>
- <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> x = <span class="number">1</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.x = <span class="number">2</span>;</div><div class="line">&#125;</div><div class="line">test();</div><div class="line"><span class="built_in">console</span>.log(x); <span class="comment">// 2</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>隐式绑定</p>
-<p> 当函数的调用有调用对象时，this会根据对象属性引用链的最后一层来决定指向哪个对象，例如：</p>
- <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.x)</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> obj = &#123;&#125;;</div><div class="line">obj.x = <span class="number">1</span>;</div><div class="line">obj.fun = test;</div><div class="line">obj.fun(); <span class="comment">// 1</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>显式绑定</p>
-<p> JavaScript提供绝的大多数函数，以及自己创建的函数都可以使用call()和apply()方法进行显式绑定，该方法的第一个参数是一个对象，给this准备的。例如：</p>
- <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> x = <span class="number">0</span>;</div><div class="line">	</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.x);</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> obj = &#123;&#125;;</div><div class="line">obj.x = <span class="number">3</span>;</div><div class="line">obj.fun = test;</div><div class="line">	</div><div class="line">obj.fun().apply(); <span class="comment">// 0 没有参数默认指向window对象</span></div><div class="line">obj.fun().apply(obj); <span class="comment">// 3 指定了this指向了obj</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>new关键字绑定</p>
-<p> 通过构造函数通过new关键字生成一个新对象，这时 this 指向该新对象。例如：</p>
- <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> x = <span class="number">0</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Test</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.x = <span class="number">3</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> Test();</div><div class="line"><span class="built_in">console</span>.log(x); <span class="comment">// 0 全局对象的值根本没变</span></div><div class="line"><span class="built_in">console</span>.log(obj.x); <span class="comment">// 3</span></div></pre></td></tr></table></figure>
-</li>
-</ol>
-<blockquote>
-<p>注：绑定优先级：new&gt;显式绑定&gt;隐式绑定&gt;默认绑定</p>
-</blockquote>
-<h1 id="绑定例外"><a href="#绑定例外" class="headerlink" title="绑定例外"></a>绑定例外</h1><p>当把null或者undefined作为this的绑定对象传入call或apply方法中，这些值在调用时会被忽略，this应用默认绑定规则。</p>
-<h1 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h1><p>箭头函数中的this并不遵守上述4个绑定规则，而是根据外层的作用域来决定this的绑定的。例如：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.a);</div><div class="line">    &#125;, <span class="number">100</span>);</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> bar = &#123;</div><div class="line">    a: <span class="number">2</span></div><div class="line">&#125;;</div><div class="line">foo.call(bar); <span class="comment">// 2</span></div></pre></td></tr></table></figure>
+<h3 id="闭包是什么"><a href="#闭包是什么" class="headerlink" title="闭包是什么"></a>闭包是什么</h3><p>我们可以把它看作是一块保持变量引用的持久作用域，JavaScript和Ruby都支持闭包。即使在执行了某一代码块之后，闭包允许变量引用它们的父级作用域，只要变量在某处有引用，闭包就一直存在。</p>
+<p>来看示例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</div><div class="line"> <span class="keyword">let</span> obj = getObj(); </div><div class="line"></div><div class="line"> <span class="keyword">let</span> result = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; testCallback(obj); &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我们来看result函数，它是一个能够访问obj对象的函数。函数result形成了一个闭包 - result函数拥有访问其父作用域元素的能力。</p>
+<p>我认为闭包是一种粘性的父环境，当声明变量时附加到变量或执行上下文的引用快照。</p>
+<h3 id="闭包能做什么"><a href="#闭包能做什么" class="headerlink" title="闭包能做什么"></a>闭包能做什么</h3><p>JavaScript是单线程的，并且存在异步执行机制。代码不会发生等待，如果函数内部有函数，则内部函数可以在其整个生命周期内访问其作用域成员。我们经常所写的回调函数就可以成为一个闭包。</p>
+<p>我们来看示例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> Alligator = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line"> <span class="keyword">let</span> alligatorLength = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random()*<span class="number">10</span>);</div><div class="line"> <span class="keyword">let</span> getAlligatorLength = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; </div><div class="line">  <span class="built_in">console</span>.log(alligatorLength); </div><div class="line"> &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>getAlligatorLength</code>作用域引用了Alligator`函数的变量。</p>
+<p>我们可以利用闭包实现函数柯里化，减少调用次数。如下所示：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">name1</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">name2</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> name1+ <span class="string">" and "</span> + name2;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(add(<span class="string">"alligator"</span>)(<span class="string">"croc"</span>));</div></pre></td></tr></table></figure>
+<p>闭包可以与柯里化一起使用，比如，声明一个类的私有变量。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Obj</span>(<span class="params"></span>) </span>&#123;</div><div class="line"> <span class="keyword">let</span> hiddenPower = <span class="string">"I can fly"</span>;</div><div class="line"> <span class="keyword">return</span> &#123;</div><div class="line">  showPower: <span class="function"><span class="params">()</span> =&gt;</span> &#123; <span class="built_in">console</span>.log(hiddenPower); &#125;</div><div class="line"> &#125;;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> obj = <span class="keyword">new</span> Obj();</div><div class="line"><span class="built_in">console</span>.log(obj.hiddenPower); <span class="comment">// undefined</span></div><div class="line">obj.showPower(); <span class="comment">// I can fly</span></div></pre></td></tr></table></figure>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>闭包是JavaScript中一个非常微妙但强大的功能，理解它是成为一个真正JavaScript开发人员的重要一步。</p>
 
       
     </div>
@@ -433,8 +417,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/02/CSS动画知多少/" rel="next" title="CSS动画知多少">
-                <i class="fa fa-chevron-left"></i> CSS动画知多少
+              <a href="/2019/05/26/如何动态加载Vuex模块/" rel="next" title="如何动态加载Vuex模块">
+                <i class="fa fa-chevron-left"></i> 如何动态加载Vuex模块
               </a>
             
           </div>
@@ -442,10 +426,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/04/15/Prettier完全使用指北/" rel="prev" title="Prettier完全使用指北">
-                Prettier完全使用指北 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -586,7 +566,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#关于this"><span class="nav-number">1.</span> <span class="nav-text">关于this</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#绑定规则"><span class="nav-number">2.</span> <span class="nav-text">绑定规则</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#绑定例外"><span class="nav-number">3.</span> <span class="nav-text">绑定例外</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#箭头函数"><span class="nav-number">4.</span> <span class="nav-text">箭头函数</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#闭包是什么"><span class="nav-number">1.</span> <span class="nav-text">闭包是什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#闭包能做什么"><span class="nav-number">2.</span> <span class="nav-text">闭包能做什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#小结"><span class="nav-number">3.</span> <span class="nav-text">小结</span></a></li></ol></div>
             
 
           </div>

@@ -101,7 +101,7 @@
 <meta property="og:site_name" content="Gladiator&#39;s Blog">
 <meta property="og:description" content="记录工作中踩到的坑，无序。。。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-09T14:45:14.198Z">
+<meta property="og:updated_time" content="2019-05-26T15:39:20.985Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="工作填坑杂谈(3)">
 <meta name="twitter:description" content="记录工作中踩到的坑，无序。。。">
@@ -357,8 +357,8 @@
       
 
       
-        <h1 id="图片加载失败，显示默认图片"><a href="#图片加载失败，显示默认图片" class="headerlink" title="图片加载失败，显示默认图片"></a>图片加载失败，显示默认图片</h1><p>img标签自带onError属性，当图片加载失败时，触发error事件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;image.png&quot; onError=&apos;this.src=&quot;http://ww4.sinaimg.cn/large/006y8mN6gw1fa5obmqrmvj305k05k3yh.jpg&quot;&apos; /&gt;</span><br></pre></td></tr></table></figure></p>
-<p>jQuery的error事件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(&apos;img&apos;).error(function()&#123;</span><br><span class="line">    $(this).attr(&apos;src&apos;,&quot;http://ww4.sinaimg.cn/large/006y8mN6gw1fa5obmqrmvj305k05k3yh.jpg&quot;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+        <h1 id="图片加载失败，显示默认图片"><a href="#图片加载失败，显示默认图片" class="headerlink" title="图片加载失败，显示默认图片"></a>图片加载失败，显示默认图片</h1><p>img标签自带onError属性，当图片加载失败时，触发error事件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;img src=&quot;image.png&quot; onError=&apos;this.src=&quot;http://ww4.sinaimg.cn/large/006y8mN6gw1fa5obmqrmvj305k05k3yh.jpg&quot;&apos; /&gt;</div></pre></td></tr></table></figure></p>
+<p>jQuery的error事件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(&apos;img&apos;).error(function()&#123;</div><div class="line">    $(this).attr(&apos;src&apos;,&quot;http://ww4.sinaimg.cn/large/006y8mN6gw1fa5obmqrmvj305k05k3yh.jpg&quot;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
 <h1 id="svn提交时报错-Item-is-out-of-date"><a href="#svn提交时报错-Item-is-out-of-date" class="headerlink" title="svn提交时报错: Item is out of date"></a>svn提交时报错: Item is out of date</h1><p>错误重现：本地提交后，修改后，执行第二次提交，本地状态是没有变的，所以就会出现Item is out of date，需要更新下版本，再执行修改，然后提交。<br>错误原因：遇到这个错误原因是本地的资源文件版本不是服务器上面最新的版本，因此修改本地文件再提交时候，就会报Out of date错误。<br>解决办法：修改文件时候一定要首先保证和服务器一致，再做修改；而此时 需要先将本地文件还原（记着备份哦），再更新和服务器一致后再做修改。</p>
 <h1 id="vue-transition-动画-第一次不触发"><a href="#vue-transition-动画-第一次不触发" class="headerlink" title="vue transition 动画 第一次不触发"></a>vue transition 动画 第一次不触发</h1><p>Vue执行transition动画之前，Dom结构一定要事先渲染出来，所以使用v-if控制是不执行的。</p>
 <h1 id="v-bind指令关联html属性报异常"><a href="#v-bind指令关联html属性报异常" class="headerlink" title="v-bind指令关联html属性报异常"></a>v-bind指令关联html属性报异常</h1><p>Vue实例中如果data中声明的属性默认值为null，使用:src、:class等v-bind指令时，会抛出异常，所以对象应该先声明为空对象。</p>
@@ -489,7 +489,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">43</span>
+                <span class="site-state-item-count">44</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
