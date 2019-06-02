@@ -111,7 +111,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/12/09/images/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_0b266779-82f4-4a80-a97d-8ebf23008647.png">
 <meta property="og:image" content="http://yoursite.com/2018/12/09/images/0_hyuaGwUfClHRIpuk.png">
 <meta property="og:image" content="http://yoursite.com/2018/12/09/images/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_bd761f19-048e-40e1-8506-a0e71f36e3a2.png">
-<meta property="og:updated_time" content="2019-01-12T14:29:01.887Z">
+<meta property="og:updated_time" content="2019-05-26T15:39:20.984Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端开发应该学会的JavaScript调试Bug技巧">
 <meta name="twitter:description" content="JavaScript调试技巧">
@@ -378,7 +378,7 @@
 <p>所以在遇到 Bug 时，要尽可能需要多次重现 Bug，减少不必要的步骤。</p>
 <p>我们通过一个测试的 Demo 来逐步修复 Bug：</p>
 <ul>
-<li><a href="https://googlechrome.github.io/devtools-samples/debug-js/get-started" target="_blank" rel="noopener">Demo 地址</a></li>
+<li><a href="https://googlechrome.github.io/devtools-samples/debug-js/get-started" target="_blank" rel="external">Demo 地址</a></li>
 <li>Demo 中输入 1 和 2，结果为 12，这明显是一个需要修复的 Bug</li>
 </ul>
 <h1 id="第二步：使用-Chrome-DevTools-的断点暂停代码执行"><a href="#第二步：使用-Chrome-DevTools-的断点暂停代码执行" class="headerlink" title="第二步：使用 Chrome DevTools 的断点暂停代码执行"></a>第二步：使用 Chrome DevTools 的断点暂停代码执行</h1><p>Chrome DevTools 可以在代码运行期间通过设置断点来暂停代码，并且在暂停区间可以看到当前上下文中变量的值。</p>
@@ -390,7 +390,7 @@
 <li>选中<strong>click</strong>复选框</li>
 </ol>
 <p><img src="./../images/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_cd5ea0ea-09fc-44d4-8a76-ee80e84165db.png" alt=""></p>
-<ol start="6">
+<ol>
 <li>这时，再次点击按钮“Add Number 1 and Number 2”，代码会暂停运行。</li>
 </ol>
 <blockquote>
@@ -412,7 +412,7 @@
 <ul>
 <li>查看 updateLabel() 中的最后一行代码，如下所示：</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">label.textContent = addend1 + &apos; + &apos; + addend2 + &apos; = &apos; + sum;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">label.textContent = addend1 + &apos; + &apos; + addend2 + &apos; = &apos; + sum;</div></pre></td></tr></table></figure>
 <p>这行代码显然是问题所在，在这行设置行断点。</p>
 <ul>
 <li>点击<strong>Resume script execution</strong>按钮</li>
@@ -455,15 +455,15 @@
 </ol>
 <p><img src="./../images/0_hyuaGwUfClHRIpuk.png" alt="img"></p>
 <p>它变为蓝色表示正处于活动状态。如果这样设置，DevTools 会忽略你设置的任何断点。</p>
-<ol start="4">
+<ol>
 <li>点击<strong>Resume script execution</strong></li>
 </ol>
 <p><img src="./../images/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_bd761f19-048e-40e1-8506-a0e71f36e3a2.png" alt="img"></p>
-<ol start="5">
+<ol>
 <li>在项目中修改对应的代码，Bug 解决了。</li>
 </ol>
 <blockquote>
-<p><strong>参考资料：</strong>  <strong><a href="https://codeburst.io/learn-how-to-debug-javascript-with-chrome-devtools-9514c58479db" target="_blank" rel="noopener">https://codeburst.io/learn-how-to-debug-javascript-with-chrome-devtools-9514c58479db</a></strong></p>
+<p><strong>参考资料：</strong>  <strong><a href="https://codeburst.io/learn-how-to-debug-javascript-with-chrome-devtools-9514c58479db" target="_blank" rel="external">https://codeburst.io/learn-how-to-debug-javascript-with-chrome-devtools-9514c58479db</a></strong></p>
 </blockquote>
 
       
@@ -592,7 +592,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">43</span>
+                <span class="site-state-item-count">44</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
